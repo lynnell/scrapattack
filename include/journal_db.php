@@ -1,6 +1,6 @@
 <?php
 
-
+# test
 function insertJournal($parentid, $journal_title, $journal_note){
 	
 	
