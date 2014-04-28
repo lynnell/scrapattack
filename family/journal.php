@@ -24,20 +24,11 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/journal_db.php"); //incl
 if (isset($_POST) && !empty($_POST) && !empty($_GET['jid'])) {	
 		echo "update";
 // Now checking user name and password is entered or not.
-			$firstname= mysql_real_escape_string($_POST['firstname']);
-			$middlename = mysql_real_escape_string($_POST['middlename']);
-			$lastname= mysql_real_escape_string($_POST['lastname']);
-				if (empty($_POST['birthdate']))
-				{
-				$birthdate = '00/00/0000';
-				}
-				else
-				{
-				$birthdate= mysql_real_escape_string($_POST['birthdate']);
-				}	
-			
-			updateChild($_GET['fid'], $firstname, $middlename, $lastname, $birthdate);
-}	 
+			$journal_title= mysql_real_escape_string($_POST['journal_title']);
+			$journal_note = mysql_real_escape_string($_POST['journal_note']);
+	$jid = mysql_real_escape_string($_POST['jid']);
+			updateJournal($_GET['fid'], $firstname, $middlename, $lastname, $birthdate);
+			}	 
 elseif (!empty($_GET['jid']) )
 {
 			$row = getChild($_GET['fid']); 
@@ -56,8 +47,8 @@ elseif (isset($_POST) && !empty($_POST)  && empty($_POST['jid']) )
 			$journal_title = mysql_real_escape_string($_POST['journal_title']);
 			$journal_note = mysql_real_escape_string($_POST['journal_note']);
 			$jid = insertJournal($parentid, $journal_title, $journal_note);
-echo $jid;
-			
+			echo $jid;
+			$jid ="";
 			
 } 
 else 
@@ -300,18 +291,7 @@ while($res=mysql_fetch_array($result))
 </tbody>
  </table>
 <br>
-						<fieldset>
-							<div class="clearfix">
-								<div class="input">
-									<button tabindex="" type="button" class="btn btn-succes btn-large">Add Photo</button>
-									<button tabindex="" type="button" class="btn btn-succes btn-large">Add Journal</button>
-									<button tabindex="" type="button" class="btn btn-succes btn-large">Add Note</button>
-								</div>
-							</div>
-
-						</fieldset>
-
-				</div>
+			</div>
 		
 			</div>
 		<!-- end: Add entry for child Form -->

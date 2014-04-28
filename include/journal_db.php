@@ -5,14 +5,12 @@ function insertJournal($parentid, $journal_title, $journal_note){
 	
 	
 	$qry = "INSERT INTO 
-	`journal` (`journalid`, `parentid`, `journal_note`,`journal_title`) 
+	`journal` ( `parentid`, `journal_note`,`journal_title`) 
 	VALUES 
-	(uuid(),'".$parentid."','".$journal_title."','".$journal_note."')";
-	
-	echo $qry;
+	('".$parentid."','".$journal_note."','".$journal_title."')";
+echo $qry;
 	mysql_query($qry);
 	$id = mysql_insert_id();
-	
 	return $id;
 	
 	
@@ -20,7 +18,7 @@ function insertJournal($parentid, $journal_title, $journal_note){
 
 function getJournalList($fid){
 		$query = "SELECT journal_note,journal_title FROM journal
-					where parentid = '$fid';";
+					where parentid = '$fid' order by timestamp desc;";
 			
 		$result = mysql_query($query);
 		return $result;
