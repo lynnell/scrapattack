@@ -29,7 +29,7 @@ $num_rows = mysql_num_rows($qry);
 		$_SESSION['active']= true;
 		$_SESSION['username']= $row[1];
 		} # end else
-	header("location:../index.php");
+	header("location:".$_SESSION['BaseURL']."index.php");
 		
 } # end post if
 

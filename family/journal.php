@@ -221,63 +221,78 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
 		<!-- start: Container -->
 		<div class="container">
 		
-		
-		
-<!-- start: Contact Form -->
-
-			<div class="span4">
+	
+			<!-- start: Image Form -->
+					<div class="span3">
+						<div class="title"><h4>Journal For</h4></div>
+							insert photo here
+						</div>
+			<!-- end: Image Form -->	
 			
-			
-			
-				<div class="title"><h4>Add Journal</h4></div>
+			<!-- start: Add entry for child Form -->
+					<div class="span5">
+						<div class="title"><h4>Journal Entries</h4></div>
 
-				<!-- start: Contact Form -->
-				<div id="contact-form">
+							<!-- start: Contact Form -->
+							<div id="contact-form" style= "height: 400px; overflow-y: scroll;">
+								 <table class="table" >
+									 <tr class="table caption"><td colspan='2'>Journal Entries<br>
+									 make this table ajax select item and update to the left</td></tr>
+									 <tbody type="tbody" class= "table tbody + tbody" >
+									<?php   
+									$result = getJournalList($fid) ;
+									while($res=mysql_fetch_array($result))
+									{ ?>
 
-					<form action="<?php $_SERVER['PHP_SELF']?>" method="post" >
-
-					
-					
-					
-					
-					
-						<fieldset>
-							<div class="clearfix">
-							<label for="age"><span>Journal Title</span></label>
-								<div class="input">
-									<input required id="journal_title" tabindex="" size="25" name="journal_title" type="text" value="" class="input-xlarge">
-								</div>
+									 <tr onclick="loadJournal()" ><td ><?php echo $res['journal_title'] ; ?></td><td><?php echo $res['journal_note'] ; ?></td></tr>
+									<?php } ?>
+									</tbody>
+								</table>
+								<br>
 							</div>
-						
-						
-							<div class="clearfix">
-								<label for="message"><span>Note:</span></label>
-								<div class="input">
-									<textarea required tabindex="" class="input-xlarge" id="journal_note" name="journal_note" rows="7"></textarea>
-									<input id="jid" tabindex="" size="30" name="jid" type="text" value="<?php echo $jid;?>" class="input-xlarge">
-								</div>
+					
+						</div>
+			<!-- end: Add entry for child Form -->		
+	
+			<!-- start: Contact Form -->
+					<div class="span3">
+							<div class="title"><h4>Add Journal</h4></div>
+							<!-- start: Contact Form -->
+							<div id="contact-form">
+								<form action="<?php $_SERVER['PHP_SELF']?>" method="post" >
+									<fieldset>
+										<div class="clearfix">
+										<label for="age"><span>Journal Title</span></label>
+											<div class="input">
+												<input required id="journal_title" tabindex="" size="25" name="journal_title" type="text" value="" class="input-xlarge">
+											</div>
+										</div>
+									
+									
+										<div class="clearfix">
+											<label for="message"><span>Note:</span></label>
+											<div class="input">
+												<textarea required tabindex="" class="input-xlarge" id="journal_note" name="journal_note" rows="7"></textarea>
+												<input id="jid" tabindex="" size="30" name="jid" type="text" value="<?php echo $jid;?>" class="input-xlarge">
+											</div>
+										</div>
+
+										<div class="actions">
+											<button tabindex="" type="submit" class="btn btn-succes btn-large">Save</button>
+											<button tabindex="" type="submit" class="btn btn-succes btn-large">Cancel</button>
+										</div>
+									</fieldset>
+							<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+							
+								<input  size="20" name="fid" type="text" value="<?php echo $fid; ?>">
+											
+							<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+							
+								</form>
 							</div>
-
-							<div class="actions">
-								<button tabindex="" type="submit" class="btn btn-succes btn-large">Save</button>
-								<button tabindex="" type="submit" class="btn btn-succes btn-large">Cancel</button>
-							</div>
-						</fieldset>
-				<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+							<!-- end: Contact Form -->
 				
-					<input  size="20" name="fid" type="text" value="<?php echo $fid; ?>">
-								
-				<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-				
-					</form>
-				</div>
-				<!-- end: Contact Form -->
-
-				
-
-				
-				
-			</div>
+					</div>
 			<!-- end: Contact Form -->
 
 
@@ -286,7 +301,7 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
 
 			<!-- end: Map -->
 
-		</div>
+	</div>
 		<!-- end: Container  -->
 
 		<!-- start: Container -->

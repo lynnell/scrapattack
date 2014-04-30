@@ -1,12 +1,10 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/config.php"); //including config.php in our file
 if($_SESSION['active']){
-
  $uid =  $_SESSION['uid'];
 } 
  
 ?>
-
 	<link href="../css/bootstrap.css" rel="stylesheet">
 	<link href="../css/bootstrap-responsive.css" rel="stylesheet">
 	<link href="../css/style.css" rel="stylesheet">
@@ -33,7 +31,8 @@ if($_SESSION['active']){
                   						<li><a href="#">My Family</a></li>
 																	<?php
 																	
-																	if($_SESSION['active']){
+																	if($_SESSION['active'])
+																	{
 																			$query = "select uid, username, email, familymembers.firstname ffn, familymembers.middlename ffm, familymembers.id fid from users, familymembers 
 																			where users.uid = familymembers.parentid and
 																			users.uid = '".$uid."';";
@@ -41,7 +40,7 @@ if($_SESSION['active']){
 																			#echo mysql_error();
 																			while($res=mysql_fetch_array($result))
 																			{ 
-																			?>
+																		?>
 																			<li><a href ="/scrapattack/family/familymember.php?fid=<?php echo $res['fid']; ?> "><?php echo $res['ffn'] . ' ' . $res['ffm']  ;  ?></a></li>
 																			<?php 
 																			} 
