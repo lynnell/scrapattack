@@ -36,8 +36,6 @@ elseif (!empty($_GET['jid']) )
 			$middlename  = $row[1]; 
 			$lastname  = $row[2];
 			$birthdate  = $row[3];
-			
-			
 }
 
 			
@@ -108,6 +106,15 @@ echo "do nothing";
   $(document).ready(function() {
     $("#datepicker").datepicker();
   });
+  
+  
+  function loadJournal()
+  {
+  alert("test");
+  }
+  
+  
+  
   </script>
 		
 </head>
@@ -274,7 +281,7 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
 		<div class="title"><h4>Journal Entries</h4></div>
 
 				<!-- start: Contact Form -->
-				<div id="contact-form">
+				<div id="contact-form" style= "height: 400px; overflow-y: scroll;">
 
 
  <table class="table" >
@@ -286,7 +293,7 @@ $result = getJournalList($fid) ;
 while($res=mysql_fetch_array($result))
 { ?>
 
- <tr class="table caption thead tr" ><td ><?php echo $res['journal_title'] ; ?></td><td><?php echo $res['journal_note'] ; ?></td></tr>
+ <tr onclick="loadJournal()" ><td ><?php echo $res['journal_title'] ; ?></td><td><?php echo $res['journal_note'] ; ?></td></tr>
 <?php } ?>
 </tbody>
  </table>

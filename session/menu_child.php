@@ -1,6 +1,6 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/config.php"); //including config.php in our file
-# $uid =  $_SESSION['uid'];
+ $uid =  $_SESSION['uid'];
 ?>
 
 	<link href="../css/bootstrap.css" rel="stylesheet">

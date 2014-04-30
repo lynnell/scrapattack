@@ -7,7 +7,7 @@ if (!isset($_SESSION['active']) && empty($_SESSION['active'])) {
 	$_SESSION['active'] = false;
 	$_SESSION['fid'] = null;
 } 
-
+echo "uid:  " . $_SESSION['uid'] ;
 ?>
 
 <html lang="en">
