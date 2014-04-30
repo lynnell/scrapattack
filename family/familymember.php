@@ -115,6 +115,9 @@ echo "do nothing";
 		<div class="container">
 
 
+		
+		
+
 			<!--start: Header -->
 			<header>
 
@@ -206,56 +209,78 @@ include("../session/menu_child.php");
 			
 		</div>
 		<!--end: Container-->
-		<!-- start: Container -->
-		<div class="container">
-<!-- start: Contact Form -->
+		
+		
+										<!-- start: Tabs -->
+						<div class="title"><h3><insert name here></h3></div>
 
-			<div class="span4">
-			
-			
-			
-				<div class="title"><h4>Edit Child Information</h4></div>
+						<ul class="tabs-nav">
+							<li class="active"><a href="#tab1"><i class="mini-ico-glass"></i> Profile</a></li>
+							<li><a href="#tab2"><i class="mini-ico-list"></i> Milestones</a></li>							
+							<li><a href="#tab3"><i class="mini-ico-list"></i> Journals</a></li>
+							<li><a href="#tab4"><i class="mini-ico-pencil"></i> Photos</a></li>
+						</ul>
 
-				<!-- start: Contact Form -->
+						<div class="tabs-container">
+						<!-- START:  EDIT PROFILE -->
+			<div class="tab-content" id="tab1">
+							<!-- start: Contact Form -->
 				<div id="contact-form">
 
 					<form action="<?php $_SERVER['PHP_SELF']?>" method="post" >
 
 						<fieldset>
-							<div class="clearfix">
-								<label for="name"><span>Name:</span></label>
-								<div class="input">
-									<input tabindex="1" size="18" id="firstname" name="firstname" type="text" value="<?php echo $firstname; ?>">
-									<input tabindex="1" size="18" id="middlename" name="middlename" type="text" value="<?php echo $middlename; ?>">
-									<input tabindex="1" size="18" id="lastname" name="lastname" type="text" value="<?php echo $lastname; ?>">
-								</div>
-							</div>
-							
-							
-
-							<div class="clearfix">
-								<label for="age"><span>Age</span></label>
-								<div class="input">
-									<input id="datepicker" tabindex="2" size="25" name="birthdate" type="text" value="<?php echo $birthdate; ?>" class="input-xlarge">
-								</div>
-							</div>
-
-							<div class="clearfix">
-								<label for="message"><span>Note:</span></label>
-								<div class="input">
-									<textarea tabindex="3" class="input-xlarge" id="message" name="body" rows="7"></textarea>
-								</div>
-							</div>
-
-							<div class="actions">
-								<button tabindex="3" type="submit" class="btn btn-succes btn-large">Save</button>
-								<button tabindex="3" type="submit" class="btn btn-succes btn-large">Cancel</button>
-							</div>
+									<div class="clearfix">
+										<label for="name"><span>Name:</span></label>
+										<div class="input">
+											<input tabindex="1" size="18" id="firstname" name="firstname" type="text" value="<?php echo $firstname; ?>">
+											<input tabindex="1" size="18" id="middlename" name="middlename" type="text" value="<?php echo $middlename; ?>">
+											<input tabindex="1" size="18" id="lastname" name="lastname" type="text" value="<?php echo $lastname; ?>">
+										</div>
+									</div>
+									<div class="clearfix">
+										<label for="age"><span>Age</span></label>
+										<div class="input">
+											<input id="datepicker" tabindex="2" size="25" name="birthdate" type="text" value="<?php echo $birthdate; ?>" class="input-xlarge">
+										</div>
+									</div>
+									<div class="clearfix">
+										<label for="message"><span>Note:</span></label>
+										<div class="input">
+											<textarea tabindex="3" class="input-xlarge" id="message" name="body" rows="7"></textarea>
+										</div>
+									</div>
+									<div class="actions">
+										<button tabindex="3" type="submit" class="btn btn-succes btn-large">Save</button>
+										<button tabindex="3" type="submit" class="btn btn-succes btn-large">Cancel</button>
+									</div>
 						</fieldset>
 
 					</form>
 				</div>
-				<!-- end: Contact Form -->
+				<!-- end: Contact Form -->			
+			</div>				
+			
+			<div class="tab-content" id="tab2">
+			
+			</div> <!-- end tab 2 -->
+			
+				<div class="tab-content" id="tab3">3. Lorem ipsum pharetra felis. Aliquam egestas consectetur elementum class aptent taciti sociosqu ad litora torquent perea conubia nostra lorem inceptos orem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+				<div class="tab-content" id="tab3">3. Lorem ipsum pharetra felis. Aliquam egestas consectetur elementum class aptent taciti sociosqu ad litora torquent perea conubia nostra lorem inceptos orem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+			</div>
+						<!-- end: Tabs -->
+		
+		
+	<!-- start: Container -->
+		<div class="container">
+	<!-- start: Contact Form -->
+		<div class="span4">
+			
+			
+			
+				<div class="title"><h4>Edit Child Information</h4></div>
+
+				
 
 				
 				<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
@@ -267,10 +292,10 @@ include("../session/menu_child.php");
 				
 				
 			</div>
-			<!-- end: Contact Form -->
-		<!-- start: Add entry for child Form -->
-			<div class="span4">
-		<div class="title"><h4>Add Entry</h4></div>
+	<!-- end: Contact Form -->
+	
+	<!-- start: Add entry for child Form -->
+		<div class="span4">	<div class="title"><h4>Add Entry</h4></div>
 
 				<!-- start: Contact Form -->
 				<div id="contact-form">
@@ -291,7 +316,7 @@ include("../session/menu_child.php");
 				</div>
 		
 			</div>
-		<!-- end: Add entry for child Form -->
+	<!-- end: Add entry for child Form -->
 		</div>
 
 			<!-- end: Map -->
