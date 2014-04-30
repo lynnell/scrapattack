@@ -220,6 +220,9 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
 		<!--end: Container-->
 		<!-- start: Container -->
 		<div class="container">
+		
+		
+		
 <!-- start: Contact Form -->
 
 			<div class="span4">
@@ -276,32 +279,9 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
 				
 			</div>
 			<!-- end: Contact Form -->
-		<!-- start: Add entry for child Form -->
-			<div class="span4">
-		<div class="title"><h4>Journal Entries</h4></div>
-
-				<!-- start: Contact Form -->
-				<div id="contact-form" style= "height: 400px; overflow-y: scroll;">
 
 
- <table class="table" >
- <tr class="table caption"><td colspan='2'>Journal Entries<br>
- make this table ajax select item and update to the left</td></tr>
- <tbody type="tbody" class= "table tbody + tbody" >
-<?php   
-$result = getJournalList($fid) ;
-while($res=mysql_fetch_array($result))
-{ ?>
 
- <tr onclick="loadJournal()" ><td ><?php echo $res['journal_title'] ; ?></td><td><?php echo $res['journal_note'] ; ?></td></tr>
-<?php } ?>
-</tbody>
- </table>
-<br>
-			</div>
-		
-			</div>
-		<!-- end: Add entry for child Form -->
 		</div>
 
 			<!-- end: Map -->

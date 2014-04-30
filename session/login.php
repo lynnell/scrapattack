@@ -1,9 +1,7 @@
 <?php
 
 session_start();
-
 $_SESSION['BaseURL'] = "http://" . $_SERVER['HTTP_HOST']."/scrapattack/";
-
 include("../include/config.php"); //including config.php in our file
 
 if(isset($_POST) && !empty($_POST))
