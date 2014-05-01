@@ -219,15 +219,9 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
 		</div>
 		<!--end: Container-->
 		<!-- start: Container -->
-		<div class="container">
 		
-	
-			<!-- start: Image Form -->
-					<div class="span3">
-						<div class="title"><h4>Journal For</h4></div>
-							insert photo here
-						</div>
-			<!-- end: Image Form -->	
+		
+		<div class="container">
 			
 			<!-- start: Add entry for child Form -->
 					<div class="span5">
@@ -249,7 +243,8 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
 								<br>
 							</div>
 					
-						</div>
+					</div>
+				
 			<!-- end: Add entry for child Form -->		
 	
 			<!-- start: Contact Form -->

@@ -3,7 +3,6 @@
 session_start();
 $uid = $_SESSION['uid'];
 $fid = $_GET['fid'];
-echo "base " . $_SESSION['BaseURL'];
 
 include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/config.php"); //including config.php in our file
 include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/child_db.php"); //including config.php in our file
@@ -60,6 +59,45 @@ echo "do nothing";
 <html lang="en">
 <head>
 
+<script>
+ function saveUser()
+{
+ var firstName = document.getElementById("firstname").value;
+ var middleName = document.getElementById("middlename").value;
+ var lastName = document.getElementById("lastname").value;
+  
+ var fid = document.getElementById("fid").value;
+ /*if (str=="")
+   {
+   document.getElementById("UserInformation").innerHTML="";
+   return;
+   }
+*/
+   
+if (window.XMLHttpRequest)
+   {// code for IE7+, Firefox, Chrome, Opera, Safari
+   xmlhttp=new XMLHttpRequest();
+   }
+ else
+   {// code for IE6, IE5
+   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+   }
+ xmlhttp.onreadystatechange=function()
+   {
+   if (xmlhttp.readyState==4 && xmlhttp.status==200)
+     {
+     //document.getElementById("UserInformation").innerHTML=xmlhttp.responseText;
+     }
+   };
+   //document.setElementById("note").innerHTML="include/saveChild.php?firstName="+firstName+"&fid="+fid;
+xmlhttp.open("GET","../include/saveChild.php?firstName="+firstName+"&middleName="+middleName+"&lastName="+lastName+"&fid="+fid,true);
+ xmlhttp.send();
+ 
+ }
+ </script>
+ 
+
+
 	<!-- start: Meta -->
 	<meta charset="utf-8">
 	<title>ScrapAttack - Contact</title>
@@ -88,6 +126,16 @@ echo "do nothing";
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Boogaloo">
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
+	
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>        
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>        
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />         
+  	
+	
+	
+	
+	
+	
 	<!-- end: CSS -->
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -99,12 +147,7 @@ echo "do nothing";
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
   
-  <script>
-  $(document).ready(function() {
-    $("#datepicker").datepicker();
-  });
-  </script>
-		
+	
 </head>
 <body>
 
@@ -211,8 +254,8 @@ include("../session/menu_child.php");
 		<!--end: Container-->
 		
 		
-										<!-- start: Tabs -->
-						<div class="title"><h3><insert name here></h3></div>
+					<!-- start: Tabs -->
+						<div class="title"><h3>insert name here</h3></div>
 
 						<ul class="tabs-nav">
 							<li class="active"><a href="#tab1"><i class="mini-ico-glass"></i> Profile</a></li>
@@ -227,7 +270,7 @@ include("../session/menu_child.php");
 							<!-- start: Contact Form -->
 				<div id="contact-form">
 
-					<form action="<?php $_SERVER['PHP_SELF']?>" method="post" >
+					<!-- <form action="<?php $_SERVER['PHP_SELF']?>" method="post" > -->
 
 						<fieldset>
 									<div class="clearfix">
@@ -245,18 +288,18 @@ include("../session/menu_child.php");
 										</div>
 									</div>
 									<div class="clearfix">
-										<label for="message"><span>Note:</span></label>
+										<label for="note"><span>Note:</span></label>
 										<div class="input">
-											<textarea tabindex="3" class="input-xlarge" id="message" name="body" rows="7"></textarea>
+											<textarea tabindex="3" class="input-xlarge" id="note" name="body" rows="7"></textarea>
 										</div>
 									</div>
 									<div class="actions">
-										<button tabindex="3" type="submit" class="btn btn-succes btn-large">Save</button>
+										<button onclick="saveUser()" tabindex="3" type="button " class="btn btn-succes btn-large">Save</button>
 										<button tabindex="3" type="submit" class="btn btn-succes btn-large">Cancel</button>
 									</div>
 						</fieldset>
 
-					</form>
+					<!-- </form> -->
 				</div>
 				<!-- end: Contact Form -->			
 			</div>				
@@ -265,61 +308,40 @@ include("../session/menu_child.php");
 			
 			</div> <!-- end tab 2 -->
 			
-				<div class="tab-content" id="tab3">3. Lorem ipsum pharetra felis. Aliquam egestas consectetur elementum class aptent taciti sociosqu ad litora torquent perea conubia nostra lorem inceptos orem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-				<div class="tab-content" id="tab3">3. Lorem ipsum pharetra felis. Aliquam egestas consectetur elementum class aptent taciti sociosqu ad litora torquent perea conubia nostra lorem inceptos orem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+				<div class="tab-content" id="tab3">
+			<!-- start: Add entry for child Form -->
+					
+						
+
+							<!-- start: Contact Form -->
+							<div id="contact-form" style= "height: 400px; overflow-y: scroll;">
+								 <table class="table" border="1">
+									 <tr class="table caption"><td colspan='2'>Click on row to edit</td></tr>
+
+								</table>
+							</div>
+			<!-- end: Add entry for child Form -->	
+				
+				</div> <!-- end tab 3 -->
+				
+				
+				
+				
+				
+				
+				<div class="tab-content" id="tab4">3. Lorem ipsum pharetra felis. Aliquam egestas consectetur elementum class aptent taciti sociosqu ad litora torquent perea conubia nostra lorem inceptos orem ipsum dolor sit amet, consectetur adipiscing elit.</div>
 			</div>
 						<!-- end: Tabs -->
 		
 		
 	<!-- start: Container -->
-		<div class="container">
-	<!-- start: Contact Form -->
+
 		<div class="span4">
-			
-			
-			
-				<div class="title"><h4>Edit Child Information</h4></div>
-
-				
-
-				
-				<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-				
-					<input  size="20" name="fid" type="text" value="<?php echo $fid; ?>">
-								
-				<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-				
-				
-				
-			</div>
-	<!-- end: Contact Form -->
-	
-	<!-- start: Add entry for child Form -->
-		<div class="span4">	<div class="title"><h4>Add Entry</h4></div>
-
-				<!-- start: Contact Form -->
-				<div id="contact-form">
-
-						<fieldset>
-							<div class="clearfix">
-								<div class="input">
-									<input onclick=window.location.href="<?php echo $_SESSION['BaseURL'] ."family/journal.php"?>" value="Add Journal" type="button" class="btn btn-succes btn-large" />
-									<input onclick=window.location.href="<?php echo $_SESSION['BaseURL'] ."family/photo.php"?>" value="Add Photo" type="button" class="btn btn-succes btn-large" />
-
-
-									<button tabindex="" type="button" class="btn btn-succes btn-large">Add Note</button>
-								</div>
-							</div>
-
-						</fieldset>
-
-				</div>
-		
-			</div>
-	<!-- end: Add entry for child Form -->
+					TEST POINT - fid: <input  id="fid" size="20" name="fid" type="text" value="<?php echo $fid; ?>">
 		</div>
+	
 
-			<!-- end: Map -->
+	<!-- end: Map -->
 
 		</div>
 		<!-- end: Container  -->
