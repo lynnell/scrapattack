@@ -6,3 +6,43 @@ http://localhost/scrapattack/family/saveChild.php?firstName=john&fid=152253e6-cc
 UPDATE familymembers set profile_image=LOAD_FILE('c:/test/P6260028.JPG') WHERE id='1';
 UPDATE familymembers set profile_image=LOAD_FILE('c:/test/IMG_1867.JPG') WHERE id='2';
 UPDATE familymembers set profile_image=LOAD_FILE('c:/test/IMG_1847.JPG') WHERE id='3';
+
+
+
+
+ function saveImage()
+{
+ var parentid = document.getElementById("parentid").value;
+ var journal_title = document.getElementById("journal_title").value;
+ var journal_note = document.getElementById("journal_note").value;
+
+ var fid = document.getElementById("fid").value;
+ /*if (str=="")
+   {
+   document.getElementById("UserInformation").innerHTML="";
+   return;
+   }
+*/
+   
+if (window.XMLHttpRequest)
+   {// code for IE7+, Firefox, Chrome, Opera, Safari
+   xmlhttp=new XMLHttpRequest();
+   }
+ else
+   {// code for IE6, IE5
+   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+   }
+ xmlhttp.onreadystatechange=function()
+   {
+   if (xmlhttp.readyState==4 && xmlhttp.status==200)
+     {
+     //document.getElementById("UserInformation").innerHTML=xmlhttp.responseText;
+     }
+   }
+	xmlhttp.open("GET","../include/saveChild.php?parentid="+parentid+"&journal_title="+journal_title+"&journal_note="+journal_note,true);
+	xmlhttp.send();
+ }
+
+
+ function saveMileStone()
+{

@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <?php
 session_start();
 $uid = $_SESSION['uid'];
 $fid = $_GET['fid'];
-$jid = '1' ;#$_GET['jid'];
-#TO DO:  get child name and other info
+$jid = '1'; #$_GET['jid'];
+
 
 include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/config.php"); //including config.php in our file
 include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/child_db.php"); 
@@ -49,16 +50,14 @@ else
 	} 		
 
 ?>
-<!DOCTYPE html>
+
 
 <html lang="en">
 <head>
 
 <script>
-//TO DO: move javascript to include file
- function saveImage()
-{
- var parentid = document.getElementById("parentid").value;
+/*
+var parentid = document.getElementById("parentid").value;
  var journal_title = document.getElementById("journal_title").value;
  var journal_note = document.getElementById("journal_note").value;
 
@@ -68,7 +67,7 @@ else
    document.getElementById("UserInformation").innerHTML="";
    return;
    }
-*/
+
    
 if (window.XMLHttpRequest)
    {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -88,49 +87,14 @@ if (window.XMLHttpRequest)
 	xmlhttp.open("GET","../include/saveChild.php?parentid="+parentid+"&journal_title="+journal_title+"&journal_note="+journal_note,true);
 	xmlhttp.send();
  }
-
-
-
-
- function saveMileStone()
-{
- var parentid = document.getElementById("parentid").value;
- var journal_title = document.getElementById("journal_title").value;
- var journal_note = document.getElementById("journal_note").value;
-
- var fid = document.getElementById("fid").value;
- /*if (str=="")
-   {
-   document.getElementById("UserInformation").innerHTML="";
-   return;
-   }
-*/
-   
-if (window.XMLHttpRequest)
-   {// code for IE7+, Firefox, Chrome, Opera, Safari
-   xmlhttp=new XMLHttpRequest();
-   }
- else
-   {// code for IE6, IE5
-   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-   }
- xmlhttp.onreadystatechange=function()
-   {
-   if (xmlhttp.readyState==4 && xmlhttp.status==200)
-     {
-     //document.getElementById("UserInformation").innerHTML=xmlhttp.responseText;
-     }
-   }
-	xmlhttp.open("GET","../include/saveChild.php?parentid="+parentid+"&journal_title="+journal_title+"&journal_note="+journal_note,true);
-	xmlhttp.send();
- }
-
+ */
+ 
  function setJournal(journalid,journal_title,journal_note)
 {
-document.getElementById("jid").value = journalid;
-document.getElementById("journal_title").value = journal_title;
- document.getElementById("journal_note").value = journal_note;
- } // end function setJournal
+	document.getElementById("jid").value = journalid;
+	document.getElementById("journal_title").value = journal_title;
+	document.getElementById("journal_note").value = journal_note;
+} 
  
  function saveJournal()
 {
@@ -147,23 +111,21 @@ if (str=="")
    
 if (window.XMLHttpRequest)
    {// code for IE7+, Firefox, Chrome, Opera, Safari
-   xmlhttp=new XMLHttpRequest();
+		xmlhttp=new XMLHttpRequest();
    }
  else
    {// code for IE6, IE5
-   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
    }
- xmlhttp.onreadystatechange=function()
+		xmlhttp.onreadystatechange=function()
    {
    if (xmlhttp.readyState==4 && xmlhttp.status==200)
      {
      //document.getElementById("UserInformation").innerHTML=xmlhttp.responseText;
      }
    }
-
 	xmlhttp.open("GET","../include/saveChild.php?journalid="+journalid+"&journal_title="+journal_title+"&journal_note="+journal_note,true);
 	xmlhttp.send();
-	*/
  }
 
  function saveUser()
@@ -171,14 +133,7 @@ if (window.XMLHttpRequest)
  var firstName = document.getElementById("firstname").value;
  var middleName = document.getElementById("middlename").value;
  var lastName = document.getElementById("lastname").value;
-  
  var fid = document.getElementById("fid").value;
- /*if (str=="")
-   {
-   document.getElementById("UserInformation").innerHTML="";
-   return;
-   }
-*/
    
 if (window.XMLHttpRequest)
    {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -194,7 +149,7 @@ if (window.XMLHttpRequest)
      {
      //document.getElementById("UserInformation").innerHTML=xmlhttp.responseText;
      }
-   }
+	}
 	xmlhttp.open("GET","../include/saveChild.php?firstName="+firstName+"&middleName="+middleName+"&lastName="+lastName+"&fid="+fid,true);
 	xmlhttp.send();
  }
@@ -443,7 +398,7 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 										</div>
 
 										<div class="actions">
-											<button onclick="saveUser()"  type="button" class="btn btn-succes btn-large">Save Journal</button>
+											<button onclick="saveJournal()"  type="button" class="btn btn-succes btn-large">Save Journal</button>
 											<button tabindex="" type="button" class="btn btn-succes btn-large">Cancel</button>
 										</div>
 									</fieldset>
