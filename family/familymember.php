@@ -1,13 +1,12 @@
-<!DOCTYPE html>
 <?php
 session_start();
 $uid = $_SESSION['uid'];
 $fid = $_GET['fid'];
 
+#TO DO:  get child name and other info
+
 include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/config.php"); //including config.php in our file
 include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/child_db.php"); //including config.php in our file
-
-
 
 if (isset($_POST) && !empty($_POST) && !empty($_GET['fid'])) {	
 		echo "update";
@@ -36,15 +35,6 @@ elseif (!empty($_GET['fid']) )
 			$birthdate  = $row[3];
 			$_SESSION['fid'] = $fid;
 }
-elseif (isset($_POST) && !empty($_POST)) # && !empty($_GET['fid']) )	
-{	
-			$firstname = mysql_real_escape_string($_POST['firstname']);
-			$middlename = mysql_real_escape_string($_POST['middlename']);
-			$lastname= mysql_real_escape_string($_POST['lastname']);
-				echo "insert";
-			$fid = insertChild($uid,$firstname, $middlename, $lastname );
-			$_SESSION['fid'] = $fid;
-} 
 else 
 {
 echo "do nothing";
@@ -55,11 +45,115 @@ echo "do nothing";
 	} 		
 
 ?>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
 <script>
+//TO DO: move javascript to include file
+ function saveImage()
+{
+ var parentid = document.getElementById("parentid").value;
+ var journal_title = document.getElementById("journal_title").value;
+ var journal_note = document.getElementById("journal_note").value;
+
+ var fid = document.getElementById("fid").value;
+ /*if (str=="")
+   {
+   document.getElementById("UserInformation").innerHTML="";
+   return;
+   }
+*/
+   
+if (window.XMLHttpRequest)
+   {// code for IE7+, Firefox, Chrome, Opera, Safari
+   xmlhttp=new XMLHttpRequest();
+   }
+ else
+   {// code for IE6, IE5
+   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+   }
+ xmlhttp.onreadystatechange=function()
+   {
+   if (xmlhttp.readyState==4 && xmlhttp.status==200)
+     {
+     //document.getElementById("UserInformation").innerHTML=xmlhttp.responseText;
+     }
+   }
+	xmlhttp.open("GET","../include/saveChild.php?parentid="+parentid+"&journal_title="+journal_title+"&journal_note="+journal_note,true);
+	xmlhttp.send();
+ }
+
+
+
+
+ function saveMileStone()
+{
+ var parentid = document.getElementById("parentid").value;
+ var journal_title = document.getElementById("journal_title").value;
+ var journal_note = document.getElementById("journal_note").value;
+
+ var fid = document.getElementById("fid").value;
+ /*if (str=="")
+   {
+   document.getElementById("UserInformation").innerHTML="";
+   return;
+   }
+*/
+   
+if (window.XMLHttpRequest)
+   {// code for IE7+, Firefox, Chrome, Opera, Safari
+   xmlhttp=new XMLHttpRequest();
+   }
+ else
+   {// code for IE6, IE5
+   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+   }
+ xmlhttp.onreadystatechange=function()
+   {
+   if (xmlhttp.readyState==4 && xmlhttp.status==200)
+     {
+     //document.getElementById("UserInformation").innerHTML=xmlhttp.responseText;
+     }
+   }
+	xmlhttp.open("GET","../include/saveChild.php?parentid="+parentid+"&journal_title="+journal_title+"&journal_note="+journal_note,true);
+	xmlhttp.send();
+ }
+
+
+ function saveJournal()
+{
+ var parentid = document.getElementById("parentid").value;
+ var journal_title = document.getElementById("journal_title").value;
+ var journal_note = document.getElementById("journal_note").value;
+
+ var fid = document.getElementById("fid").value;
+ /*if (str=="")
+   {
+   document.getElementById("UserInformation").innerHTML="";
+   return;
+   }
+*/
+   
+if (window.XMLHttpRequest)
+   {// code for IE7+, Firefox, Chrome, Opera, Safari
+   xmlhttp=new XMLHttpRequest();
+   }
+ else
+   {// code for IE6, IE5
+   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+   }
+ xmlhttp.onreadystatechange=function()
+   {
+   if (xmlhttp.readyState==4 && xmlhttp.status==200)
+     {
+     //document.getElementById("UserInformation").innerHTML=xmlhttp.responseText;
+     }
+   }
+	xmlhttp.open("GET","../include/saveChild.php?parentid="+parentid+"&journal_title="+journal_title+"&journal_note="+journal_note,true);
+	xmlhttp.send();
+ }
+
  function saveUser()
 {
  var firstName = document.getElementById("firstname").value;
@@ -88,11 +182,9 @@ if (window.XMLHttpRequest)
      {
      //document.getElementById("UserInformation").innerHTML=xmlhttp.responseText;
      }
-   };
-   //document.setElementById("note").innerHTML="include/saveChild.php?firstName="+firstName+"&fid="+fid;
-xmlhttp.open("GET","../include/saveChild.php?firstName="+firstName+"&middleName="+middleName+"&lastName="+lastName+"&fid="+fid,true);
- xmlhttp.send();
- 
+   }
+	xmlhttp.open("GET","../include/saveChild.php?firstName="+firstName+"&middleName="+middleName+"&lastName="+lastName+"&fid="+fid,true);
+	xmlhttp.send();
  }
  </script>
  
@@ -294,7 +386,7 @@ include("../session/menu_child.php");
 										</div>
 									</div>
 									<div class="actions">
-										<button onclick="saveUser()" tabindex="3" type="button " class="btn btn-succes btn-large">Save</button>
+										<button onclick="saveUser()"  type="button " class="btn btn-succes btn-large">Save Profile</button>
 										<button tabindex="3" type="submit" class="btn btn-succes btn-large">Cancel</button>
 									</div>
 						</fieldset>
@@ -309,20 +401,65 @@ include("../session/menu_child.php");
 			</div> <!-- end tab 2 -->
 			
 				<div class="tab-content" id="tab3">
-			<!-- start: Add entry for child Form -->
-					
-						
-
+					<div class="span3">
+							<div class="title"><h4>Add Journal</h4></div>
 							<!-- start: Contact Form -->
-							<div id="contact-form" style= "height: 400px; overflow-y: scroll;">
-								 <table class="table" border="1">
-									 <tr class="table caption"><td colspan='2'>Click on row to edit</td></tr>
+							<div id="contact-form">
+								<form action="<?php $_SERVER['PHP_SELF']?>" method="post" >
+									<fieldset>
+										<div class="clearfix">
+										<label for="age"><span>Journal Title</span></label>
+											<div class="input">
+												<input required id="journal_title" tabindex=""  name="journal_title" type="text" value="" class="input-medium">
+											</div>
+										</div>
+									
+									
+										<div class="clearfix">
+											<label for="message"><span>Note:</span></label>
+											<div class="input">
+												<textarea required tabindex="" class="input-medium " id="journal_note" name="journal_note" rows="7"></textarea>
+												<input id="jid" tabindex=""  name="jid" type="text" value="<?php echo $jid;?>" class="input-medium ">
+											</div>
+										</div>
 
-								</table>
+										<div class="actions">
+											<button onclick="saveUser()"  type="button" class="btn btn-succes btn-large">Save Journal</button>
+											<button tabindex="" type="button" class="btn btn-succes btn-large">Cancel</button>
+										</div>
+									</fieldset>
+						
+								</form>
 							</div>
-			<!-- end: Add entry for child Form -->	
+							<!-- end: Contact Form -->
 				
-				</div> <!-- end tab 3 -->
+					</div>
+					
+<div class="span3">	
+<div class="title"><h4>Previous Journals</h4></div>
+	<div id="contact-form">
+		<fieldset>			
+			<div class="clearfix">
+				<div style="display: table;">
+					<div style="display: table-row;">
+						<div style="display: table-cell;">Title</div>
+						<div style="display: table-cell;">Note</div>
+					</div>
+					<div style="display: table-row;">
+						<div style="display: table-cell;">test2</div>
+					</div>
+				</div>
+			</div>	
+		</fieldset>
+	</div>
+</div>
+					
+					
+					
+					
+					
+				
+</div> <!-- end tab 3 -->
 				
 				
 				

@@ -275,12 +275,7 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
 											<button tabindex="" type="submit" class="btn btn-succes btn-large">Cancel</button>
 										</div>
 									</fieldset>
-							<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-							
-								<input  size="20" name="fid" type="text" value="<?php echo $fid; ?>">
-											
-							<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-							
+						
 								</form>
 							</div>
 							<!-- end: Contact Form -->

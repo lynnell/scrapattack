@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-
 <?php
 session_start();
-
 if (!isset($_SESSION['active']) && empty($_SESSION['active'])) {
 	$_SESSION['active'] = false;
 	$_SESSION['fid'] = null;
-	
 } 
 ?>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<!-- start: Meta -->
