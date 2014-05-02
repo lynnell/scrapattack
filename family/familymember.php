@@ -2,11 +2,12 @@
 session_start();
 $uid = $_SESSION['uid'];
 $fid = $_GET['fid'];
-
+$jid = '1' ;#$_GET['jid'];
 #TO DO:  get child name and other info
 
 include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/config.php"); //including config.php in our file
-include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/child_db.php"); //including config.php in our file
+include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/child_db.php"); 
+include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/journal_db.php"); 
 
 if (isset($_POST) && !empty($_POST) && !empty($_GET['fid'])) {	
 		echo "update";
@@ -28,16 +29,19 @@ if (isset($_POST) && !empty($_POST) && !empty($_GET['fid'])) {
 }	 
 elseif (!empty($_GET['fid']) )
 {
+
 			$row = getChild($_GET['fid']); 
 			$firstname = $row[0];
 			$middlename  = $row[1]; 
 			$lastname  = $row[2];
 			$birthdate  = $row[3];
+			$profile_image = $row[4];
 			$_SESSION['fid'] = $fid;
+
 }
 else 
 {
-echo "do nothing";
+
 		$firstname= "";
 		$middlename = "";
 		$lastname= "";
@@ -46,6 +50,7 @@ echo "do nothing";
 
 ?>
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 
@@ -120,20 +125,25 @@ if (window.XMLHttpRequest)
 	xmlhttp.send();
  }
 
-
+ function setJournal(journalid,journal_title,journal_note)
+{
+document.getElementById("jid").value = journalid;
+document.getElementById("journal_title").value = journal_title;
+ document.getElementById("journal_note").value = journal_note;
+ } // end function setJournal
+ 
  function saveJournal()
 {
- var parentid = document.getElementById("parentid").value;
- var journal_title = document.getElementById("journal_title").value;
- var journal_note = document.getElementById("journal_note").value;
+journalid = document.getElementById("jid").value;
+journal_title = document.getElementById("journal_title").value;
+journal_note = document.getElementById("journal_note").value; 
 
  var fid = document.getElementById("fid").value;
- /*if (str=="")
+if (str=="")
    {
    document.getElementById("UserInformation").innerHTML="";
    return;
    }
-*/
    
 if (window.XMLHttpRequest)
    {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -150,8 +160,10 @@ if (window.XMLHttpRequest)
      //document.getElementById("UserInformation").innerHTML=xmlhttp.responseText;
      }
    }
-	xmlhttp.open("GET","../include/saveChild.php?parentid="+parentid+"&journal_title="+journal_title+"&journal_note="+journal_note,true);
+
+	xmlhttp.open("GET","../include/saveChild.php?journalid="+journalid+"&journal_title="+journal_title+"&journal_note="+journal_note,true);
 	xmlhttp.send();
+	*/
  }
 
  function saveUser()
@@ -347,7 +359,7 @@ include("../session/menu_child.php");
 		
 		
 					<!-- start: Tabs -->
-						<div class="title"><h3>insert name here</h3></div>
+						<div class="title"><h3><?php echo $firstname ." ". $middlename ?></h3></div>
 
 						<ul class="tabs-nav">
 							<li class="active"><a href="#tab1"><i class="mini-ico-glass"></i> Profile</a></li>
@@ -360,7 +372,14 @@ include("../session/menu_child.php");
 						<!-- START:  EDIT PROFILE -->
 			<div class="tab-content" id="tab1">
 							<!-- start: Contact Form -->
-				<div id="contact-form">
+				<div class="span3">
+<?php 
+
+echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
+ ?>
+
+				</div>
+			<div class="span3">
 
 					<!-- <form action="<?php $_SERVER['PHP_SELF']?>" method="post" > -->
 
@@ -440,15 +459,22 @@ include("../session/menu_child.php");
 	<div id="contact-form">
 		<fieldset>			
 			<div class="clearfix">
-				<div style="display: table;">
-					<div style="display: table-row;">
-						<div style="display: table-cell;">Title</div>
-						<div style="display: table-cell;">Note</div>
-					</div>
-					<div style="display: table-row;">
-						<div style="display: table-cell;">test2</div>
-					</div>
+				<div  style="display: table;border: 1px solid black;">
+					
+						<?php
+						$result = getJournalList($fid) ;
+						while($res=mysql_fetch_array($result))
+						{ ?>
+						<div onclick="setJournal(<?php echo "'". $res['journalid'] . "','" . $res['journal_title'] . "','" . $res['journal_note']."'" ; ?>)"   style="display: table-row; border: 1px solid black;">
+						<div  style="display: table-cell;border: 1px solid black;"><?php echo $res['journal_title'] ; ?></div>
+						<div  style="display: table-cell;border: 1px solid black;"><?php echo $res['journal_note'] ; ?></div>
+						</div>
+						<?php } ?>
+					
 				</div>
+				
+				
+				
 			</div>	
 		</fieldset>
 	</div>

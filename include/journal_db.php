@@ -17,7 +17,7 @@ echo $qry;
 }
 
 function getJournalList($fid){
-		$query = "SELECT journal_note,journal_title FROM journal
+		$query = "SELECT journalid, journal_note,journal_title FROM journal
 					where parentid = '$fid' order by timestamp desc;";
 			
 		$result = mysql_query($query);

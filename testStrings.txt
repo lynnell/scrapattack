@@ -2,3 +2,7 @@ http://localhost/scrapattack/include/saveChild.php?firstName=Maaarrrryyy&fid=152
 
 
 http://localhost/scrapattack/family/saveChild.php?firstName=john&fid=152253e6-ccf8-11e3-b2d7-00ffd0
+
+UPDATE familymembers set profile_image=LOAD_FILE('c:/test/P6260028.JPG') WHERE id='1';
+UPDATE familymembers set profile_image=LOAD_FILE('c:/test/IMG_1867.JPG') WHERE id='2';
+UPDATE familymembers set profile_image=LOAD_FILE('c:/test/IMG_1847.JPG') WHERE id='3';

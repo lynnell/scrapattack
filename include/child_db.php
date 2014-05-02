@@ -14,7 +14,7 @@ function insertChild($parentid, $firstname, $middlename, $lastname){
 }
 
 function getChild($fid){
-		$match = "SELECT firstname, middlename, lastname, DATE_FORMAT(birthdate,'%m-%d-%Y') FROM familymembers WHERE id =  '".$fid."';"; 
+		$match = "SELECT firstname, middlename, lastname, DATE_FORMAT(birthdate,'%m-%d-%Y'), profile_image FROM familymembers WHERE id =  '".$fid."';"; 
 		$qry = mysql_query($match);
 		$num_rows = mysql_num_rows($qry); 
 				if ($num_rows <= 0) { 
