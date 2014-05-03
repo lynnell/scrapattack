@@ -337,34 +337,32 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 			<div class="span3">
 
 					<!-- <form action="<?php $_SERVER['PHP_SELF']?>" method="post" > -->
-
-						<fieldset>
-									<div class="clearfix">
-										<label for="name"><span>Name:</span></label>
-										<div class="input">
-											<input tabindex="1" size="18" id="firstname" name="firstname" type="text" value="<?php echo $firstname; ?>">
-											<input tabindex="1" size="18" id="middlename" name="middlename" type="text" value="<?php echo $middlename; ?>">
-											<input tabindex="1" size="18" id="lastname" name="lastname" type="text" value="<?php echo $lastname; ?>">
-										</div>
-									</div>
-									<div class="clearfix">
-										<label for="age"><span>Age</span></label>
-										<div class="input">
-											<input id="datepicker" tabindex="2" size="25" name="birthdate" type="text" value="<?php echo $birthdate; ?>" class="input-xlarge">
-										</div>
-									</div>
-									<div class="clearfix">
-										<label for="note"><span>Note:</span></label>
-										<div class="input">
-											<textarea tabindex="3" class="input-xlarge" id="note" name="body" rows="7"></textarea>
-										</div>
-									</div>
-									<div class="actions">
-										<button onclick="saveUser()"  type="button " class="btn btn-succes btn-large">Save Profile</button>
-										<button tabindex="3" type="submit" class="btn btn-succes btn-large">Cancel</button>
-									</div>
-						</fieldset>
-
+	<fieldset>
+				<div class="clearfix">
+					<label for="name"><span>Name:</span></label>
+					<div class="input">
+						<input tabindex="1" size="18" id="firstname" name="firstname" type="text" value="<?php echo $firstname; ?>">
+						<input tabindex="1" size="18" id="middlename" name="middlename" type="text" value="<?php echo $middlename; ?>">
+						<input tabindex="1" size="18" id="lastname" name="lastname" type="text" value="<?php echo $lastname; ?>">
+					</div>
+				</div>
+				<div class="clearfix">
+					<label for="age"><span>Age</span></label>
+					<div class="input">
+						<input id="datepicker" tabindex="2" size="25" name="birthdate" type="text" value="<?php echo $birthdate; ?>" class="input-xlarge">
+					</div>
+				</div>
+				<div class="clearfix">
+					<label for="note"><span>Note:</span></label>
+					<div class="input">
+						<textarea tabindex="3" class="input-xlarge" id="note" name="body" rows="7"></textarea>
+					</div>
+				</div>
+				<div class="actions">
+					<button onclick="saveUser()"  type="button " class="btn btn-succes btn-large">Save Profile</button>
+					<button tabindex="3" type="submit" class="btn btn-succes btn-large">Cancel</button>
+				</div>
+	</fieldset>
 					<!-- </form> -->
 				</div>
 				<!-- end: Contact Form -->			
@@ -387,8 +385,6 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 												<input required id="journal_title" tabindex=""  name="journal_title" type="text" value="" class="input-medium">
 											</div>
 										</div>
-									
-									
 										<div class="clearfix">
 											<label for="message"><span>Note:</span></label>
 											<div class="input">
@@ -396,7 +392,6 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 												<input id="jid" tabindex=""  name="jid" type="text" value="<?php echo $jid;?>" class="input-medium ">
 											</div>
 										</div>
-
 										<div class="actions">
 											<button onclick="saveJournal()"  type="button" class="btn btn-succes btn-large">Save Journal</button>
 											<button tabindex="" type="button" class="btn btn-succes btn-large">Cancel</button>
@@ -406,7 +401,6 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 								</form>
 							</div>
 							<!-- end: Contact Form -->
-				
 					</div>
 					
 <div class="span3">	
@@ -423,6 +417,9 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 						<div onclick="setJournal(<?php echo "'". $res['journalid'] . "','" . $res['journal_title'] . "','" . $res['journal_note']."'" ; ?>)"   style="display: table-row; border: 1px solid black;">
 						<div  style="display: table-cell;border: 1px solid black;"><?php echo $res['journal_title'] ; ?></div>
 						<div  style="display: table-cell;border: 1px solid black;"><?php echo $res['journal_note'] ; ?></div>
+
+						<div  onclick="javascrpt: alert('twit this item');"  class="twitter" style="display: table-cell;border: 1px solid black;"><img src="../img/twitter.jpg"></div>
+						<div  onclick="javascrpt: alert('remove this item');" style="display: table-cell;border: 1px solid black;"><img src="../img/redX.png"></div>						
 						</div>
 						<?php } ?>
 					
