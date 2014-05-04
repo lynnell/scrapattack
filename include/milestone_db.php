@@ -19,12 +19,21 @@ function insertMilestone($parentid, $milestone_cd, $milestone_value){
 }
 
 function getMilestoneList($fid){
-		$query = "SELECT milestone_cd, milestone_value FROM milestone
-					where parentid = '$fid';";
+		
+		$queryCount = "SELECT count(*) from milestoneLookup where milestoneType = 'First Years';";
+
+		$_SESSION['milestoneCount']  =  mysql_query($queryCount);
+		$milestoneCount = $_SESSION['milestoneCount'];
+		echo "Milestone Count is: ";
+		echo $milestoneCount;
+
+		$query = "SELECT * from milestoneLookup where milestoneType = 'First Years';";
 			
 		$result = mysql_query($query);
+
 		return $result;
 }
+
 
 function updateMilestone($fid, $firstname, $middlename, $lastname, $birthdate){
 
