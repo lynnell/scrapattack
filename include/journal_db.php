@@ -1,9 +1,5 @@
 <?php
-
-# test
 function insertJournal($parentid, $journal_title, $journal_note){
-	
-	
 	$qry = "INSERT INTO 
 	`journal` ( `parentid`, `journal_note`,`journal_title`) 
 	VALUES 

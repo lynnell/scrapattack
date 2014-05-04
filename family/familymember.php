@@ -11,7 +11,6 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/child_db.php");
 include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/journal_db.php"); 
 
 if (isset($_POST) && !empty($_POST) && !empty($_GET['fid'])) {	
-		echo "update";
 // Now checking user name and password is entered or not.
 			$_SESSION['fid'] = $_GET['fid'];
 			$firstname= mysql_real_escape_string($_POST['firstname']);
@@ -56,77 +55,7 @@ else
 <head>
 
 <script>
-/*
-var parentid = document.getElementById("parentid").value;
- var journal_title = document.getElementById("journal_title").value;
- var journal_note = document.getElementById("journal_note").value;
-
- var fid = document.getElementById("fid").value;
- /*if (str=="")
-   {
-   document.getElementById("UserInformation").innerHTML="";
-   return;
-   }
-
-   
-if (window.XMLHttpRequest)
-   {// code for IE7+, Firefox, Chrome, Opera, Safari
-   xmlhttp=new XMLHttpRequest();
-   }
- else
-   {// code for IE6, IE5
-   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-   }
- xmlhttp.onreadystatechange=function()
-   {
-   if (xmlhttp.readyState==4 && xmlhttp.status==200)
-     {
-     //document.getElementById("UserInformation").innerHTML=xmlhttp.responseText;
-     }
-   }
-	xmlhttp.open("GET","../include/saveChild.php?parentid="+parentid+"&journal_title="+journal_title+"&journal_note="+journal_note,true);
-	xmlhttp.send();
- }
- */
  
- function setJournal(journalid,journal_title,journal_note)
-{
-	document.getElementById("jid").value = journalid;
-	document.getElementById("journal_title").value = journal_title;
-	document.getElementById("journal_note").value = journal_note;
-} 
- 
- function saveJournal()
-{
-journalid = document.getElementById("jid").value;
-journal_title = document.getElementById("journal_title").value;
-journal_note = document.getElementById("journal_note").value; 
-
- var fid = document.getElementById("fid").value;
-if (str=="")
-   {
-   document.getElementById("UserInformation").innerHTML="";
-   return;
-   }
-   
-if (window.XMLHttpRequest)
-   {// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp=new XMLHttpRequest();
-   }
- else
-   {// code for IE6, IE5
-		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-   }
-		xmlhttp.onreadystatechange=function()
-   {
-   if (xmlhttp.readyState==4 && xmlhttp.status==200)
-     {
-     //document.getElementById("UserInformation").innerHTML=xmlhttp.responseText;
-     }
-   }
-	xmlhttp.open("GET","../include/saveChild.php?journalid="+journalid+"&journal_title="+journal_title+"&journal_note="+journal_note,true);
-	xmlhttp.send();
- }
 
  function saveUser()
 {
@@ -178,18 +107,23 @@ if (window.XMLHttpRequest)
 	<!-- end: Facebook Open Graph -->
 
     <!-- start: CSS -->
+	<link href="../css/liststyle.css" rel="stylesheet" type="text/css" />
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/bootstrap-responsive.css" rel="stylesheet">
-	<link href="../css/style.css" rel="stylesheet">
+	<link href="../css/style.css" rel="stylesheet"> 
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Boogaloo">
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
-	
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>        
+
+      
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>        
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>        
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />         
-  	
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+ <!-- this has to be custom for each tab MUST LOAD AFTER JQUERY -->
+<script type="text/javascript" src="../js/journal.js"></script>  	
 	
 	
 	
@@ -202,10 +136,7 @@ if (window.XMLHttpRequest)
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-  
+
 	
 </head>
 <body>
@@ -372,79 +303,71 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 			
 			</div> <!-- end tab 2 -->
 			
-				<div class="tab-content" id="tab3">
-					<div class="span3">
-							<div class="title"><h4>Add Journal</h4></div>
-							<!-- start: Contact Form -->
-							<div id="contact-form">
-								<form action="<?php $_SERVER['PHP_SELF']?>" method="post" >
-									<fieldset>
-										<div class="clearfix">
-										<label for="age"><span>Journal Title</span></label>
-											<div class="input">
-												<input required id="journal_title" tabindex=""  name="journal_title" type="text" value="" class="input-medium">
-											</div>
-										</div>
-										<div class="clearfix">
-											<label for="message"><span>Note:</span></label>
-											<div class="input">
-												<textarea required tabindex="" class="input-medium " id="journal_note" name="journal_note" rows="7"></textarea>
-												<input id="jid" tabindex=""  name="jid" type="text" value="<?php echo $jid;?>" class="input-medium ">
-											</div>
-										</div>
-										<div class="actions">
-											<button onclick="saveJournal()"  type="button" class="btn btn-succes btn-large">Save Journal</button>
-											<button tabindex="" type="button" class="btn btn-succes btn-large">Cancel</button>
-										</div>
-									</fieldset>
-						
-								</form>
-							</div>
-							<!-- end: Contact Form -->
-					</div>
-					
-<div class="span3">	
-<div class="title"><h4>Previous Journals</h4></div>
-	<div id="contact-form">
-		<fieldset>			
-			<div class="clearfix">
-				<div  style="display: table;border: 1px solid black;">
-					
-						<?php
-						$result = getJournalList($fid) ;
-						while($res=mysql_fetch_array($result))
-						{ ?>
-						<div onclick="setJournal(<?php echo "'". $res['journalid'] . "','" . $res['journal_title'] . "','" . $res['journal_note']."'" ; ?>)"   style="display: table-row; border: 1px solid black;">
-						<div  style="display: table-cell;border: 1px solid black;"><?php echo $res['journal_title'] ; ?></div>
-						<div  style="display: table-cell;border: 1px solid black;"><?php echo $res['journal_note'] ; ?></div>
+			<div class="tab-content" id="tab3">
+							<div class="title" ><h3>Loving Thoughts For <?php echo $firstname ." ". $middlename ?></h3></div>
 
-						<div  onclick="javascrpt: alert('twit this item');"  class="twitter" style="display: table-cell;border: 1px solid black;"><img src="../img/twitter.jpg"></div>
-						<div  onclick="javascrpt: alert('remove this item');" style="display: table-cell;border: 1px solid black;"><img src="../img/redX.png"></div>						
-						</div>
-						<?php } ?>
-					
-				</div>
+								<ul style="height: 400px; overflow-y: scroll;" id="responds">
+												<?php
+												//MySQL query - make this a function
+												$Result = mysql_query("SELECT journalid, journal_note,journal_title FROM journal");
+
+												//get all records from add_delete_record table
+												while($row = mysql_fetch_array($Result))
+												{
+												  echo '<li id="item_'.$row["journalid"].'">';
+												  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["journalid"].'">';
+												  echo '<img src="../img/icon_del.gif" border="0" />';
+												  echo '</a></div>';
+												  echo '1-28-2014<br>'; 
+												  echo  '<p>'.$row["journal_title"].'<br><p>'. $row["journal_note"].'</li>';
+												}
+
+												//close db connection
+												mysql_close($link);
+												?>
+								</ul>
+													<div class="form_style">
+													<textarea name="content_txt" id="contentText" cols="45" rows="5"></textarea>
+													<button id="FormSubmit">Add record</button>
+													</div>
+			</div> <!-- end tab 3 -->
 				
 				
 				
-			</div>	
-		</fieldset>
-	</div>
-</div>
-					
-					
-					
-					
-					
-				
-</div> <!-- end tab 3 -->
 				
 				
 				
+				<div class="tab-content" id="tab4">
+							<div class="title" ><h3>Fun Photos For <?php echo $firstname ." ". $middlename ?></h3></div>
+
+								<ul style="height: 400px; overflow-y: scroll;" id="responds">
+												<?php
+												//MySQL query - make this a function
+												$Result = mysql_query("SELECT journalid, journal_note,journal_title FROM journal");
+
+												//get all records from add_delete_record table
+												while($row = mysql_fetch_array($Result))
+												{
+												  echo '<li id="item_'.$row["journalid"].'">';
+												  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["journalid"].'">';
+												  echo '<img src="../img/icon_del.gif" border="0" />';
+												  echo '</a></div>';
+												  echo '1-28-2014<br>'; 
+												  echo  '<p>'.$row["journal_title"].'<br><p>'. $row["journal_note"].'</li>';
+												}
+
+												//close db connection
+												mysql_close($link);
+												?>
+								</ul>
+													<div class="form_style">
+													<textarea name="content_txt" id="contentText" cols="45" rows="5"></textarea>
+													<button id="FormSubmit">Add record</button>
+													</div>
 				
 				
 				
-				<div class="tab-content" id="tab4">3. Lorem ipsum pharetra felis. Aliquam egestas consectetur elementum class aptent taciti sociosqu ad litora torquent perea conubia nostra lorem inceptos orem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+				</div> <!-- end tab 4 -->
 			</div>
 						<!-- end: Tabs -->
 		

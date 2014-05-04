@@ -19,7 +19,7 @@ if($_SESSION['active']){
 	          				</a>
 							<div class="nav-collapse collapse">
             				<ul class="nav">
-              					<li class="active"><a href="/<?php echo $_SESSION['basefolder']?>/index.php">Home</a></li>
+              					<li class="active"><a href="<?php $_SERVER['DOCUMENT_ROOT']?>/scrapattack/index.php">Home</a></li>
               					<li><a href="about.html">About</a></li>
               					<li class="dropdown">
                 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">My Family<b class="caret"></b></a>
