@@ -65,6 +65,15 @@ if($_SESSION['active']){
 								?>
 									<form action="session/login.php" method="post">
 										<div class="nav-collapse collapse" valign="top">
+												<div style="float: right;">&nbsp;&nbsp;<input value="Log In" tabindex="3" type="submit"  /></div>
+											<div style="float: right;>
+												<div style="float: left;">Password: &nbsp;<input class="inputtext" type="password" name="password" id="pass" value="" tabindex="2" />&nbsp;&nbsp;</div>
+												<div style="float: right;">Username: &nbsp;<input class="inputtext" type="text" name="username" id="email" value="" tabindex="1" />&nbsp;&nbsp;</div>
+											</div>
+										</div>
+									</form>
+									<!-- <form action="session/login.php" method="post">
+										<div class="nav-collapse collapse" valign="top">
 											<table cellspacing="0" align="right">
 											<tr>
 											<td class="logintext"><label class="logintext">Email or Phone: &nbsp;</label></td>
@@ -75,7 +84,7 @@ if($_SESSION['active']){
 											</tr>
 											</table>
 										</div>
-									</form>
+									</form> -->
 								<?php
 								}
 								?>

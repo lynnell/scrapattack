@@ -18,10 +18,12 @@
 	font-family: "Boogaloo" !important;
 	font-size: 13px;
 	text-align: left;
-	
+	width: 100px;
 }
 
-
+.inputtext {
+	width: 100px;
+}
 
 /* Import Section
 =================================================================== */
