@@ -3,7 +3,9 @@
 session_start();
 $uid =  "1";        # $_SESSION['uid'];
 $_SESSION['fid']  =  "152253e6-ccf8-11e3-b2d7-00ffd0"; 
-
+$_SESSION['milestoneCount']  =  "0"; 
+$milestoneCount = $_SESSION['milestoneCount'];
+echo $milestoneCount;
 
 if (!empty($_SESSION['fid']))
 {
@@ -17,56 +19,37 @@ $fid = $_POST['fid'];
 
 
 include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/config.php"); //including config.php in our file
+include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/journal_db.php"); //including journal_db.php in our file
 include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/milestone_db.php"); //including milestone_db.php in our file
 
 
 
-if (isset($_POST) && !empty($_POST) && !empty($_GET['mid'])) {	
+if (isset($_POST) && !empty($_POST) && !empty($_GET['jid'])) {	
 		echo "update";
 // Now checking user name and password is entered or not.
-			$firstname= mysql_real_escape_string($_POST['firstname']);
-			$middlename = mysql_real_escape_string($_POST['middlename']);
-			$lastname= mysql_real_escape_string($_POST['lastname']);
-				if (empty($_POST['birthdate']))
-				{
-				$birthdate = '00/00/0000';
-				}
-				else
-				{
-				$birthdate= mysql_real_escape_string($_POST['birthdate']);
-				}	
-			
-			updateChild($_GET['fid'], $firstname, $middlename, $lastname, $birthdate);
-}	 
-elseif (!empty($_GET['mid']) )
+			$journal_title= mysql_real_escape_string($_POST['journal_title']);
+			$journal_note = mysql_real_escape_string($_POST['journal_note']);
+	$jid = mysql_real_escape_string($_POST['jid']);
+			updateJournal($_GET['fid'], $firstname, $middlename, $lastname, $birthdate);
+			}	 
+elseif (!empty($_GET['jid']) )
 {
 			$row = getChild($_GET['fid']); 
 			$firstname = $row[0];
 			$middlename  = $row[1]; 
 			$lastname  = $row[2];
 			$birthdate  = $row[3];
-			
-			
 }
 
 			
-elseif (isset($_POST) && !empty($_POST)  && empty($_POST['mid']) )	
+elseif (isset($_POST) && !empty($_POST)  && empty($_POST['jid']) )	
 {	
 			$parentid = mysql_real_escape_string($_POST['fid']);
-			
-			$milestone_cd = mysql_real_escape_string($_POST['journal_title']);
-			$milestone_value = mysql_real_escape_string($_POST['journal_note']);
-			$mid = insertMilestone($parentid, $milestone_cd, $milestone_value);
-
-
-			//INSERT INTO `milestone` (`milestoneid`, `parentid`, `milestone_cd`, `milestone_value`, `timestamp`) VALUES
-			//('1', '152253e6-ccf8-11e3-b2d7-00ffd0', '1', 'Ball', '2014-04-27 00:00:37');
-
-			//$journal_title = mysql_real_escape_string($_POST['journal_title']);
-			//$journal_note = mysql_real_escape_string($_POST['journal_note']);
-			//$jid = insertJournal($parentid, $journal_title, $journal_note);
-echo $mid;
-			
+			$journal_title = mysql_real_escape_string($_POST['journal_title']);
+			$journal_note = mysql_real_escape_string($_POST['journal_note']);
+			$jid = insertJournal($parentid, $journal_title, $journal_note);
+			echo $jid;
+			$jid ="";
 			
 } 
 else 
@@ -126,6 +109,15 @@ echo "do nothing";
   $(document).ready(function() {
     $("#datepicker").datepicker();
   });
+  
+  
+  function loadJournal()
+  {
+  alert("test");
+  }
+  
+  
+  
   </script>
 		
 </head>
@@ -230,111 +222,98 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
 		</div>
 		<!--end: Container-->
 		<!-- start: Container -->
-		<div class="container">
-<!-- start: Contact Form -->
-
-			<div class="span4">
-			
-			
-			
-				<div class="title"><h4>Add Milestone</h4></div>
-
-				<!-- start: Contact Form -->
-				<div id="contact-form">
-
-					<form action="<?php $_SERVER['PHP_SELF']?>" method="post" >
-					
-						<fieldset>
-													
-							<div class="clearfix">
-								<label for="message"><span>First Word</span></label>
-								<div class="input">
-									<input id="milestone_value" tabindex="" size="30" name="milestone_value" type="text" value="" class="input-xlarge">
-
-									<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-									<!-- This is the Milestone ID -->
-									
-									<!--<input id="mid" tabindex="" size="30" name="mid" type="text" value="<?php echo $mid;?>" class="input-xlarge"> -->
-									
-									<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-								</div>
-							</div>
-
-							<div class="clearfix">
-								<label for="message"><span>Favorite Food</span></label>
-								<div class="input">
-									<input id="milestone_value" tabindex="" size="30" name="milestone_value" type="text" value="" class="input-xlarge">
-
-									<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-									<!-- This is the Milestone ID -->
-									
-									<!--<input id="mid" tabindex="" size="30" name="mid" type="text" value="<?php echo $mid;?>" class="input-xlarge"> -->
-									
-									<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-								</div>
-							</div>
-
-							<div class="actions">
-								<button tabindex="" type="submit" class="btn btn-succes btn-large">Save</button>
-								<button tabindex="" type="submit" class="btn btn-succes btn-large">Cancel</button>
-							</div>
-						</fieldset>
-				<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-				<!-- This is the Family ID -->
-					<input  size="20" name="fid" type="text" value="<?php echo $fid; ?>">
-								
-				<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-				
-					</form>
-				</div>
-				<!-- end: Contact Form -->
-
-				
-				
-			</div>
-			<!-- end: Contact Form -->
-		<!-- start: Add entry for child Form -->
-			<div class="span4">
-		<div class="title"><h4>Milestone Entries</h4></div>
-
-				<!-- start: Contact Form -->
-				<div id="contact-form">
-
-
- <table class="table" >
- <tr class="table caption"><td colspan='2'>Milestone Entries<br>
- make this table ajax select item and update to the left</td></tr>
- <tbody type="tbody" class= "table tbody + tbody" >
-<?php   
-$result = getMilestoneList($fid) ;
-while($res=mysql_fetch_array($result))
-{ ?>
-
- <tr class="table caption thead tr" ><td ><?php echo $res['journal_title'] ; ?></td><td><?php echo $res['journal_note'] ; ?></td></tr>
-<?php } ?>
-</tbody>
- </table>
-<br>
-						<fieldset>
-							<div class="clearfix">
-								<div class="input">
-									<button tabindex="" type="button" class="btn btn-succes btn-large">Add Photo</button>
-									<button tabindex="" type="button" class="btn btn-succes btn-large">Add Journal</button>
-									<button tabindex="" type="button" class="btn btn-succes btn-large">Add Note</button>
-								</div>
-							</div>
-
-						</fieldset>
-
-				</div>
 		
-			</div>
-		<!-- end: Add entry for child Form -->
+		
+		<div class="container">
+			
+			<!-- start: Add entry for child Form -->
+					<div class="span5">
+						<div class="title"><h4>Milestones</h4></div>					
+
+							<div id="contact-form" style= "height: 400px; overflow-y: scroll;">
+								 <table class="table" border="1">
+									 <tr class="table caption"><td colspan='2'>TESTING</td></tr>
+									 <tbody type="tbody" class="tbody" >
+									<?php   
+									$result = getMilestoneList($fid) ;
+									while($res=mysql_fetch_array($result))
+									{ ?>
+									<tr onclick="loadJournal()" >
+										<!--<td id="milestone_cd"><?php echo $res['milestone_cd'] ; ?></td>-->
+										<td id="milestone_cd"><?php echo $res['milestone_cd'] ; ?></td>
+										<td><?php echo $res['milestone_desc'] ; ?></td>
+									</tr>
+									<?php } ?>
+									</tbody>
+								</table>
+								<br>
+							</div>
+
+					</div>
+				
+			<!-- end: Add entry for child Form -->		
+	
+			<!-- start: Contact Form -->
+					<div class="span3">
+							<div class="title"><h4>Add Milestone</h4></div>
+							<!-- start: Contact Form -->
+							<div id="contact-form">
+								<form action="<?php $_SERVER['PHP_SELF']?>" method="post" >
+									<fieldset>
+										<div class="clearfix">
+	
+									<?php   
+									$result = getMilestoneList($fid) ;
+									$arrayCounter = 0;
+									//echo "Milestone count before array spin is:";
+									//echo $milestoneCount;
+									while($res=mysql_fetch_array($result) and ($arrayCounter < $_SESSION['milestoneCount']))
+									{ ?>
+										<label for="age"><span><?php echo $res['milestone_desc'] ; ?></span></label>
+								
+										<div class="input">
+											<input required id="milestone_value" tabindex="" size="25" name="result" type="text" value="" class="input-xlarge">
+											<!--<input name="arrayname[item3]">-->
+										</div>
+
+										$arrayCounter = $arrayCounter + 1;
+
+									<?php } ?>
+
+										</div>
+									
+									
+									<!--
+										<div class="clearfix">
+											<label for="message"><span>Note:</span></label>
+											<div class="input">
+												<textarea required tabindex="" class="input-xlarge" id="journal_note" name="journal_note" rows="7"></textarea>
+												<input id="jid" tabindex="" size="30" name="jid" type="text" value="<?php echo $jid;?>" class="input-xlarge">
+											</div>
+										</div>
+
+									-->
+
+										<div class="actions">
+											<button tabindex="" type="submit" class="btn btn-succes btn-large">Save</button>
+											<button tabindex="" type="submit" class="btn btn-succes btn-large">Cancel</button>
+										</div>
+									</fieldset>
+						
+								</form>
+							</div>
+							<!-- end: Contact Form -->
+				
+					</div>
+			<!-- end: Contact Form -->
+
+
+
 		</div>
 
 			<!-- end: Map -->
 
-		</div>
+	</div>
 		<!-- end: Container  -->
 
 		<!-- start: Container -->
