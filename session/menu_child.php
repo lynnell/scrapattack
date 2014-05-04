@@ -24,8 +24,9 @@ if($_SESSION['active']){
               					<li class="dropdown">
                 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">My Family<b class="caret"></b></a>
                 					<ul class="dropdown-menu">
-                  						<li><a href="<?php $_SERVER['DOCUMENT_ROOT']?>/scrapattack/family/familymember.php ">Add Child</a></li>
-                  						<li><a href="#">Add Family Member</a></li>
+                  						<li><a href="<?php $_SERVER['DOCUMENT_ROOT']?>/scrapattack/family/editProfile.php ">Edit Profile</a></li>
+                 						<li class="divider"></li> 						
+										<li><a href="#">Add Family Member</a></li>
                   						<li class="divider"></li>
                   						<li class="nav-header">Family</li>
                   						<li><a href="#">My Family</a></li>
