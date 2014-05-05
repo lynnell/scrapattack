@@ -320,15 +320,15 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 												while($row=mysql_fetch_array($result))
 												{  
 												  //$queryLookup = "SELECT * from milestoneLookup where milestone_cd = '.$row["milestone_cd"].';";
-												  $queryLookup = "SELECT milestone_cd, milestone_desc from milestoneLookup where milestone_cd = '1';";
+												  $queryLookup = "SELECT milestone_cd, milestone_desc from milestoneLookup where milestone_cd = '".$row["milestone_cd"]."';";
 												  $resultLookup = mysql_query($queryLookup);
 												  $res=mysql_fetch_array($resultLookup);
-												  echo 'Hey - milestone_desc is: '.$res["milestone_desc"];
+												  //echo 'Hey - milestone_desc is: '.$res["milestone_desc"];
 												  echo '<li id="item_'.$resultLookup["milestone_desc"].'">';
 												  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["milestone_cd"].'">';
 												  echo '<img src="../img/icon_del.gif" border="0" />';
 												  echo '</a></div>';
-												  echo  '<p>'.$res["milestone_desc"].'<br><p>'. $row["milestone_value"].'</li>';
+												  echo  '<p>'.$res["milestone_desc"].': <br><p>'. $row["milestone_value"].'</li>';
 												}
 
 												//close db connection
