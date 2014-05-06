@@ -346,31 +346,30 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 												  echo  '<p>'.$res["milestone_desc"].': <br><p>'. $row["milestone_value"].'</li>';
 												}
 
-												//close db connection
-												mysql_close($link);
 												?>
 												
 								</ul>
 													<div class="form_style">
-													<?php?
-													$queryLookup2 = "SELECT milestone_cd, milestone_desc from milestoneLookup where milestone_type = 'First Years';";
+													<p><h4>Add a milestone with three easy steps!</h4></p>
+													<p><h5>1. Make a selection from the drop down</h5></p>
+												
+													<?php
+													$queryLookup2 = "SELECT milestone_cd, milestone_desc from milestoneLookup where milestoneType = 'First Years';";
 												  	$resultLookup2 = mysql_query($queryLookup2);
+
+												  	echo '<select name="testMilestoneDropdown">';
 												  	while($res2=mysql_fetch_array($resultLookup2))
 												  	{
-													echo '<select name='"testMilestoneDropdown"'>';
-													echo '<option value='""'>'.$res2["milestone_desc"]'.</option>';
-													echo '</select>';
-
-													//<select id = "milestoneDropdown"> 
-													//	<option value="Milk">Fresh Milk</option>
+													echo '<option value="">'.$res2["milestone_desc"].'</option>';
 													}
-
-													//close db connection
-													mysql_close($link);
+													echo '</select>';
+													
 													?>
-
-													<textarea name="content_txt" id="contentText" cols="45" rows="1"></textarea>
-													<button id="FormSubmit">Add Milestone</button>
+													<p><h5>2. Enter the text</h5></p>
+													<p><input name="content_txt" id="contentText"></input></p>
+													<!--<textarea name="content_txt" id="contentText" cols="45" rows="1"></textarea>-->
+													<p><h5>3. Click "Add Milestone".</h5></p> 			
+													<button id="MilestoneSubmit">Add Milestone</button>
 													</div>
 
 >>>>>>> eb57d796014471c7494c23671c9678da62bee872

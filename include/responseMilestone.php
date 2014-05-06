@@ -2,6 +2,8 @@
 //include db configuration file
 include_once("config.php");
 
+echo "Top of responseMilestone";
+
 if(isset($_POST["content_txt"]) && strlen($_POST["content_txt"])>0) 
 {	//check $_POST["content_txt"] is not empty
 
@@ -9,7 +11,7 @@ if(isset($_POST["content_txt"]) && strlen($_POST["content_txt"])>0)
 	$contentToSave = filter_var($_POST["content_txt"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
 	
 	// Insert sanitize string in record
-	if(mysql_query("INSERT INTO journal(journal_note) VALUES('".$contentToSave."')"))
+	if(mysql_query("INSERT INTO milestone(milestone_value) VALUES('".$contentToSave."')"))
 	{
 		 //Record was successfully inserted, respond result back to index page
 		  $my_id = mysql_insert_id(); //Get ID of last inserted row from MySQL
@@ -35,7 +37,7 @@ elseif(isset($_POST["recordToDelete"]) && strlen($_POST["recordToDelete"])>0 && 
 	$idToDelete = filter_var($_POST["recordToDelete"],FILTER_SANITIZE_NUMBER_INT); 
 	
 	//try deleting record using the record ID we received from POST
-	if(!mysql_query("DELETE FROM journal WHERE journalid=".$idToDelete))
+	if(!mysql_query("DELETE FROM milestone WHERE milestoneid=".$idToDelete))
 	{    
 		//If mysql delete query was unsuccessful, output error 
 		header('HTTP/1.1 500 Could not delete record!');

@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-	//##### send add record Ajax request to response.php #########
-	$("#FormSubmit").click(function (e) {
+	//##### send add record Ajax request to responseMilestone.php #########
+	$("#MilestoneSubmit").click(function (e) {
 			e.preventDefault();
 			if($("#contentText").val()==='')
 			{
@@ -11,7 +11,7 @@ $(document).ready(function() {
 		 	var myData = 'content_txt='+ $("#contentText").val(); //build a post data structure
 			jQuery.ajax({
 			type: "POST", // HTTP method POST or GET
-			url: "../include/response.php", //Where to make Ajax calls
+			url: "../include/responseMilestone.php", //Where to make Ajax calls
 			dataType:"text", // Data type, HTML, json etc.
 			data:myData, //Form variables
 			success:function(response){
@@ -24,7 +24,7 @@ $(document).ready(function() {
 			});
 	});
 
-	//##### Send delete Ajax request to response.php #########
+	//##### Send delete Ajax request to responseMilestone.php #########
 	$("body").on("click", "#responds .del_button", function(e) {
 	alert("test point journal.js");
 		 e.returnValue = false;
@@ -34,7 +34,7 @@ $(document).ready(function() {
 		 
 			jQuery.ajax({
 			type: "POST", // HTTP method POST or GET
-			url: "../include/response.php", //Where to make Ajax calls
+			url: "../include/responseMilestone.php", //Where to make Ajax calls
 			dataType:"text", // Data type, HTML, json etc.
 			data:myData, //Form variables
 			success:function(response){
