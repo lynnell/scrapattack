@@ -142,6 +142,8 @@ function addList()
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
  <!-- this has to be custom for each tab MUST LOAD AFTER JQUERY -->
 <script type="text/javascript" src="../js/journal.js"></script>  	
+<script type="text/javascript" src="../js/milestone.js"></script>  	
+
 	
 	
 	
@@ -321,9 +323,6 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 			
 				<div class="title" ><h3>Milestone Moments For <?php echo $firstname ." ". $middlename ?></h3></div>
 
-<<<<<<< HEAD
-	
-=======
 								<ul style="height: 400px; overflow-y: scroll;" id="responds">
 												<?php
 												
@@ -372,7 +371,6 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 													<button id="MilestoneSubmit">Add Milestone</button>
 													</div>
 
->>>>>>> eb57d796014471c7494c23671c9678da62bee872
 			</div> <!-- end tab 2 -->
 			
 			<div class="tab-content" id="tab3">
