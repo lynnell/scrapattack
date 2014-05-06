@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="en">
 <head>
 	<!-- start: Meta -->
@@ -130,49 +133,9 @@
 			<!--end: Header-->
 
 			<!--start: Navigation-->
-			<div class="navbar navbar-inverse">
-    			<div class="navbar-inner">
-        			<div class="container">
-          				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            				<span class="icon-bar"></span>
-            				<span class="icon-bar"></span>
-            				<span class="icon-bar"></span>
-          				</a>
-          				<div class="nav-collapse collapse">
-            				<ul class="nav">
-              					<li class="active"><a href="index.html">Home</a></li>
-              					<li><a href="about.html">About</a></li>
-								<!-- <li><a href="services.html">Services</a></li>
-								<li><a href="pricing.html">Pricing</a></li> -->
-              					<li class="dropdown">
-                					<a href="#" class="dropdown-toggle" data-toggle="dropdown">My Family<b class="caret"></b></a>
-                					<ul class="dropdown-menu">
-                  						<li><a href="#">Add Child</a></li>
-                  						<li><a href="#">Edit Child</a></li>
-                  						<li><a href="#">Add Other Loved One</a></li>
-                  						<li><a href="#">Edit Other Loved One</a></li>
-                  						<li class="divider"></li>
-                  						<li class="nav-header">Family</li>
-                  						<li><a href="#">My Family</a></li>
-                  						<li><a href="#">William Irving</a></li>
-                  						<li><a href="#">Sophia Marie</a></li>
-                  						<li><a href="#">Dog</a></li>
-                  						<li><a href="#">Cat</a></li>
-                  						<li><a href="#">Fish</a></li>
-                  						<li><a href="#">Mom</a></li>
-                  						<li><a href="#">Dad</a></li>
-                  						<li><a href="#">Gramma A</a></li>
-                   						<li><a href="#">Grampa A</a></li>
-                  						<li><a href="#">Gramma B</a></li>
-                   						<li><a href="#">Grampa B</a></li>
-               					</ul>
-              					</li>
-              					<li><a href="contact.html">Contact</a></li>
-            				</ul>
-          				</div>
-        			</div>
-      			</div>
-    		</div>
+<?php
+include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
+?>
 			<!--end: Navigation-->
 
 		</div>

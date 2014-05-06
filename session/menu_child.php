@@ -20,7 +20,7 @@ if($_SESSION['active']){
 							<div class="nav-collapse collapse">
             				<ul class="nav">
               					<li class="active"><a href="<?php $_SERVER['DOCUMENT_ROOT']?>/scrapattack/index.php">Home</a></li>
-              					<li><a href="about.html">About</a></li>
+              					<li><a href="<?php $_SERVER['DOCUMENT_ROOT']?>/scrapattack/about.php">About</a></li>
               					<li class="dropdown">
                 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">My Family<b class="caret"></b></a>
                 					<ul class="dropdown-menu">
@@ -49,7 +49,7 @@ if($_SESSION['active']){
 																	?>
                						</ul>
 												</li>
-              					<li><a href="contact.html">Contact</a></li>
+              					<li><a href="<?php $_SERVER['DOCUMENT_ROOT']?>/scrapattack/contact.php">Contact</a></li>
             				</ul>
 							</div>
 						<div>						
