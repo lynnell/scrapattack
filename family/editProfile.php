@@ -51,9 +51,16 @@ $num_rows = mysql_num_rows($qry);
  function saveUser()
 {
  var firstName = document.getElementById("firstname").value;
- var middleName = document.getElementById("middlename").value;
- var lastName = document.getElementById("lastname").value;
- var fid = document.getElementById("fid").value;
+ var lastName = document.getElementById("lastName").value;
+ var password = document.getElementById("password").value;
+ var email = document.getElementById("email").value;
+ var address1 = document.getElementById("address1").value;
+ var address2 = document.getElementById("address2").value;
+ var city = document.getElementById("city").value;
+ var state = document.getElementById("+state").value;
+ var phone = document.getElementById("phone").value;
+ var uid = document.getElementById("uid").value;
+ }
    
 if (window.XMLHttpRequest)
    {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -231,25 +238,21 @@ include("../session/menu_child.php");
 		<!--end: Container-->
 		
 		<div class="title"><h3>Profile For:<?php echo $firstname ." ". $lastname ?></h3></div>
-
-		
 						<div id="form_container">
-											<div class="form_description">
-									<h2>Edit Profile</h2>
-
+							<div class="form_description">
 								</div>						
 									<ul >
 									
-											<li id="li_1" >
-								<label class="description" for="element_1">Name </label>
-								<span>
-									<input id="element_1_1" name= "firstname" class="element text" maxlength="255" size="8" value="<?php echo $firstname ;?>"/>
+								<li id="li_1" >
+								<span >
+									<input id="element_1_1" name= "firstname" class="element text" maxlength="50" size="8" value="<?php echo $firstname ;?>"/>
 									<label>First</label>
-								</span>
-								<span>
+									
 									<input id="element_1_2" name= "lastname" class="element text" maxlength="50" size="14" value="<?php echo $lastname ;?>" />
 									<label>Last</label>
-								</span> 
+								
+								</span>
+ 
 								</li>		<li id="li_2" >
 								<label class="description" for="element_2">Address </label>
 								

@@ -1,14 +1,16 @@
 $(document).ready(function() {
 
 	//##### send add record Ajax request to response.php #########
-	$("#FormSubmit").click(function (e) {
+	$("#JournalSubmit").click(function (e) {
 			e.preventDefault();
 			if($("#contentText").val()==='')
 			{
-				alert("Please enter some text!");
+				alert("Please enter journal!");
 				return false;
 			}
-		 	var myData = 'content_txt='+ $("#contentText").val(); //build a post data structure
+		 	var myData = 'journal_text='+ $("#journal_text").val(); //build a post data structure
+		 	var myData = 'journal_date='+ $("#journal_date").val(); //build a post data structure			
+		 	var myData = 'journal_title='+ $("#journal_title").val(); //build a post data structure			
 			jQuery.ajax({
 			type: "POST", // HTTP method POST or GET
 			url: "../include/response.php", //Where to make Ajax calls
@@ -16,7 +18,7 @@ $(document).ready(function() {
 			data:myData, //Form variables
 			success:function(response){
 				$("#responds").append(response);
-				$("#contentText").val(''); //empty text field on successful
+				$("#journal_text").val(''); //empty text field on successful
 			},
 			error:function (xhr, ajaxOptions, thrownError){
 				alert(thrownError);

@@ -305,40 +305,7 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 			
 				<div class="title" ><h3>Milestone Moments For <?php echo $firstname ." ". $middlename ?></h3></div>
 
-								<ul style="height: 400px; overflow-y: scroll;" id="responds">
-												<?php
-												
-												//$result = getMilestoneList($fid) ;
-
-												$query = "SELECT * from milestone;";
-
-												//$query = "SELECT * from milestoneLookup where milestoneType = 'First Years';";
-			
-
-												$result = mysql_query($query);
-
-												while($row=mysql_fetch_array($result))
-												{  
-												  $queryLookup = "SELECT * from milestoneLookup where milestone_cd = '.$row["milestone_cd"].';";
-												  $resultLookup = mysql_query($queryLookup);
-												  //echo '<li id="item_'.$row["milestone_cd"].'">';
-												  echo '<li id="item_'.$resultLookup["milestone_desc"].'">';
-												  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["milestone_cd"].'">';
-												  echo '<img src="../img/icon_del.gif" border="0" />';
-												  echo '</a></div>';
-												  echo  '<p>'.$row["milestone_cd"].'<br><p>'. $row["milestone_value"].'</li>';
-												}
-
-												//close db connection
-												mysql_close($link);
-												?>
-												
-								</ul>
-													<div class="form_style">
-													<textarea name="content_txt" id="contentText" cols="45" rows="5"></textarea>
-													<button id="FormSubmit">Add record</button>
-													</div>
-
+	
 			</div> <!-- end tab 2 -->
 			
 			<div class="tab-content" id="tab3">
@@ -365,8 +332,10 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 												?>
 								</ul>
 													<div class="form_style">
-													<textarea name="content_txt" id="contentText" cols="45" rows="5"></textarea>
-													<button id="FormSubmit">Add record</button>
+														<input  id="journal_date"  size="20" name="journal_date"  type="text" value="">
+														<input  id="journal_title" size="20" name="journal_title" type="text" value="">
+														<textarea name="journal_text" id="journal_text" cols="45" rows="5"></textarea>
+													<button id="JournalSubmit">Add Journal</button>
 													</div>
 			</div> <!-- end tab 3 -->
 				
@@ -399,8 +368,9 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 												?>
 								</ul>
 													<div class="form_style">
-													<textarea name="content_txt" id="contentText" cols="45" rows="5"></textarea>
-													<button id="FormSubmit">Add record</button>
+												
+													
+													<button id="PhotoSubmit">Add Photo</button>
 													</div>
 				
 				
