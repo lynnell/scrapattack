@@ -227,7 +227,7 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
         		<div class="span4">
           			<div class="icons-box">
 						<i class="ico-heart circle big"></i>
-						<div class="title"><h3>Fun to use</h3></div>
+						<div class="title"><h3>Fun to Use</h3></div>
 						<p>
 							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
 						</p>

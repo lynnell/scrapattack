@@ -84,6 +84,22 @@ if (window.XMLHttpRequest)
 	xmlhttp.open("GET","../include/saveChild.php?firstName="+firstName+"&middleName="+middleName+"&lastName="+lastName+"&fid="+fid,true);
 	xmlhttp.send();
  }
+
+function addList()
+{
+
+	// Create an Option object       
+    var opt = document.createElement("milestoneDropdown");        
+
+    // Assign text and value to Option object
+    opt.text = "Favorite Toy";
+    opt.value = "Fav Toy";
+
+    // Add an Option object to Drop Down List Box
+    document.getElementById("milestoneDropdown").options.add(opt);
+
+}
+
  </script>
  
 
@@ -305,7 +321,59 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 			
 				<div class="title" ><h3>Milestone Moments For <?php echo $firstname ." ". $middlename ?></h3></div>
 
+<<<<<<< HEAD
 	
+=======
+								<ul style="height: 400px; overflow-y: scroll;" id="responds">
+												<?php
+												
+												//$result = getMilestoneList($fid) ;
+
+												$query = "SELECT * from milestone;";
+													
+												$result = mysql_query($query);
+
+												while($row=mysql_fetch_array($result))
+												{  
+												  $queryLookup = "SELECT milestone_cd, milestone_desc from milestoneLookup where milestone_cd = '".$row["milestone_cd"]."';";
+												  $resultLookup = mysql_query($queryLookup);
+												  $res=mysql_fetch_array($resultLookup);
+												  //echo 'Hey - milestone_desc is: '.$res["milestone_desc"];
+												  echo '<li id="item_'.$resultLookup["milestone_desc"].'">';
+												  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["milestone_cd"].'">';
+												  echo '<img src="../img/icon_del.gif" border="0" />';
+												  echo '</a></div>';
+												  echo  '<p>'.$res["milestone_desc"].': <br><p>'. $row["milestone_value"].'</li>';
+												}
+
+												//close db connection
+												mysql_close($link);
+												?>
+												
+								</ul>
+													<div class="form_style">
+													<?php?
+													$queryLookup2 = "SELECT milestone_cd, milestone_desc from milestoneLookup where milestone_type = 'First Years';";
+												  	$resultLookup2 = mysql_query($queryLookup2);
+												  	while($res2=mysql_fetch_array($resultLookup2))
+												  	{
+													echo '<select name='"testMilestoneDropdown"'>';
+													echo '<option value='""'>'.$res2["milestone_desc"]'.</option>';
+													echo '</select>';
+
+													//<select id = "milestoneDropdown"> 
+													//	<option value="Milk">Fresh Milk</option>
+													}
+
+													//close db connection
+													mysql_close($link);
+													?>
+
+													<textarea name="content_txt" id="contentText" cols="45" rows="1"></textarea>
+													<button id="FormSubmit">Add Milestone</button>
+													</div>
+
+>>>>>>> eb57d796014471c7494c23671c9678da62bee872
 			</div> <!-- end tab 2 -->
 			
 			<div class="tab-content" id="tab3">
