@@ -1,18 +1,23 @@
 <?php
+
+//if testing with a string
 include("../include/config.php"); //including config.php in our file
 
 echo "point 1";
-if(isset($_GET["journal_title"]))
+if(isset($_POST["journal_title"]))
 // && strlen($_POST["journal_title"])>0)
  {	//check $_POST["content_txt"] is not empty
 echo "point 2";
 	//sanitize post value, PHP filter FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH Strip tags, encode special characters.
-	//$journal_date = filter_var($_GET["journal_date"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
-	$journal_title = filter_var($_GET["journal_title"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
-	$journal_text = filter_var($_GET["journal_text"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
-	$fid = $_GET["fid"]; 
+	//$journal_date = filter_var($_POST["journal_date"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
+	$journal_title = filter_var($_POST["journal_title"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
+	$journal_text = filter_var($_POST["journal_text"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
+	$fid = $_POST["fid"]; 
 	// Insert sanitize string in record
-	if(mysql_query("INSERT INTO journal(parentid,journal_title,journal_note) VALUES('".$fid."','".$journal_title."','".$journal_text."')"))
+	echo "point 1";
+	$insertSQL = "INSERT INTO journal(parentid,journal_title,journal_note) VALUES('".$fid."','".$journal_title."','".$journal_text."')";
+	echo ($insertSQL);
+	if(mysql_query($insertSQL))
 	{
 		 //Record was successfully inserted, respond result back to index page
 		  $my_id = mysql_insert_id(); //Get ID of last inserted row from MySQL
@@ -20,10 +25,11 @@ echo "point 2";
 		  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$my_id.'">';
 		  echo '<img src="../img/icon_del.gif" border="0" />';
 		  echo '</a></div>';
-		  echo $contentToSave.'</li>';
+		  echo $journal_text.'</li>';
 		  mysql_close($link); //close db connection
-
-	}else{
+		  
+	}
+	else{
 		
 		header('HTTP/1.1 500 '.mysql_error()); //display sql errors.. must not output sql errors in live mode.
 		header('HTTP/1.1 500 Looks like mysql error, could not insert record!');
