@@ -136,8 +136,27 @@ function addList()
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Boogaloo">
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
+<<<<<<< HEAD
 	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
     <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"> 
+=======
+
+      
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>        
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>        
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />         
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+ <!-- this has to be custom for each tab MUST LOAD AFTER JQUERY -->
+<script type="text/javascript" src="../js/journal.js"></script>  	
+<script type="text/javascript" src="../js/milestone.js"></script>  	
+
+	
+	
+	
+	
+	
+>>>>>>> a5c429451b2c996ac0939a2f63e4091b5796ac26
 	<!-- end: CSS -->
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -300,7 +319,12 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 			<div class="tab-content" id="tab2">
 			
 				<div class="title" ><h3>Milestone Moments For <?php echo $firstname ." ". $middlename ?></h3></div>
+<<<<<<< HEAD
 						<ul style="height: 400px; overflow-y: scroll;" id="responds">
+=======
+
+								<ul style="height: 400px; overflow-y: scroll;" id="responds">
+>>>>>>> a5c429451b2c996ac0939a2f63e4091b5796ac26
 												<?php
 												
 												//$result = getMilestoneList($fid) ;
@@ -347,7 +371,10 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 													<button id="FormSubmit">Add Milestone</button>
 													</div>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a5c429451b2c996ac0939a2f63e4091b5796ac26
 			</div> <!-- end tab 2 -->
 			
 			<div class="tab-content" id="tab3">
