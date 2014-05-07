@@ -1,16 +1,86 @@
 <!DOCTYPE html>
 <?php
 session_start();
-$uid =  "1";        # $_SESSION['uid'];
-$_SESSION['fid']  =  "152253e6-ccf8-11e3-b2d7-00ffd0"; 
+$uid = '1'; #$_SESSION['uid'];
+
+
 
 include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/config.php"); //including config.php in our file
+#include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/profile_db.php"); 
+
+
+if (!empty($uid) )
+{
+# get users profile
+$match = "select firstname, lastname, username, password, email, address1, address2, city, state, phone from users where uid = '".$uid."';"; 
+echo $match;
+$qry = mysql_query($match);
+$num_rows = mysql_num_rows($qry); 
+
+		if ($num_rows <= 0) { 
+		echo "Sorry, there is no username $username with the specified password.";
+		echo "Try again";
+		exit; 
+
+		} # end if 
+		else
+		{
+		
+		$row = mysql_fetch_row($qry);
+		$firstname = $row[0];
+		$lastname  = $row[1]; 
+		$username  = $row[2];
+		$password  = $row[3];
+		$email  = $row[4];
+		$address1 = $row[5];
+		$address2 = $row[6];
+		$city = $row[7];
+		$state = $row[8];
+		$phone = $row[9];
+		} # end else	
+} # end else post if
 ?>
+
 
 <html lang="en">
 <head>
 
-	<!-- start: Meta -->
+<script>
+ 
+function saveUser()
+{
+ var firstName = document.getElementById("firstname").value;
+ var lastName = document.getElementById("lastName").value;
+ var password = document.getElementById("password").value;
+ var email = document.getElementById("email").value;
+ var address1 = document.getElementById("address1").value;
+ var address2 = document.getElementById("address2").value;
+ var city = document.getElementById("city").value;
+ var state = document.getElementById("state").value;
+ var phone = document.getElementById("phone").value;
+ var uid = document.getElementById("uid").value;
+ }
+   
+if (window.XMLHttpRequest)
+   {// code for IE7+, Firefox, Chrome, Opera, Safari
+   xmlhttp=new XMLHttpRequest();
+   }
+ else
+   {// code for IE6, IE5
+   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+   }
+ xmlhttp.onreadystatechange=function()
+   {
+   if (xmlhttp.readyState==4 && xmlhttp.status==200)
+     {
+     //document.getElementById("UserInformation").innerHTML=xmlhttp.responseText;
+     }
+	}
+	xmlhttp.open("GET","../include/saveProfile.php?firstName="+firstName+"&lastName="+lastName+"&password="+password+"&email="+email+"&address1="+address1+"&address2="+address2+"&city="+city+"&state="+state+"&phone="+phone+"&uid="+uid,true);
+	xmlhttp.send();
+ }
+ </script>
+ 	<!-- start: Meta -->
 	<meta charset="utf-8">
 	<title>ScrapAttack - Contact</title>
 	<meta name="description" content="FreeME:Bootstrap Theme"/>
@@ -33,11 +103,22 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/config.php"); //includin
     <!-- start: CSS -->
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/bootstrap-responsive.css" rel="stylesheet">
-	<link href="../css/style.css" rel="stylesheet">
+	<link href="../css/style.css" rel="stylesheet"> 
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Boogaloo">
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
+
+      
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>        
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>        
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />         
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+	
+	
+	
 	<!-- end: CSS -->
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -45,25 +126,8 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/config.php"); //includin
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-  
-  <script>
-  $(document).ready(function() {
-    $("#datepicker").datepicker();
-  });
-  
-  
-  function loadJournal()
-  {
-  alert("test");
-  }
-  
-  
-  
-  </script>
-		
+
+	
 </head>
 <body>
 
@@ -73,6 +137,9 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/config.php"); //includin
 		<!--start: Container -->
 		<div class="container">
 
+
+		
+		
 
 			<!--start: Header -->
 			<header>
@@ -159,61 +226,81 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/config.php"); //includin
 
 			<!--start: Navigation-->
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
+include("../session/menu_child.php");
 ?>
 			<!--end: Navigation-->
 			
 		</div>
 		<!--end: Container-->
-		<!-- start: Container -->
 		
-		
-		<div class="container">
-			
-	
-			<!-- start: Contact Form -->
-					<div class="span3">
-							<div class="title"><h4>Edit Profile</h4></div>
-							<!-- start: Contact Form -->
-							<div id="contact-form">
-									<fieldset>
-										<div class="clearfix">
-										<label for="age"><span>Profile Name</span></label>
-											<div class="input">
-												<input required id="firstname" tabindex="" size="25" name="firstname" type="text" value="" class="input-xlarge">
-												<input required id="lastname" tabindex="" size="25" name="lastname" type="text" value="" class="input-xlarge">
-											</div>
-										</div>
+		<div class="title"><h3>Profile For:<?php echo $firstname ." ". $lastname ?></h3></div>
+		<div id="form_container">
+							<div class="form_description"></div>						
+									<ul >
 									
-										<div class="clearfix">
-											<label for="message"><span>Address</span></label>
-											<div class="input">
-												<input required id="address1" tabindex="" size="30" name="address1" type="text" value="" class="input-xlarge">
-												<input required id="address2" tabindex="" size="30" name="address2" type="text" value="" class="input-xlarge">
-												<input required id="city" tabindex="" size="30" name="city" type="text" value="" class="input-xlarge">
-												<input required id="state" tabindex="" size="2" name="state" type="text" value="" class="input-xlarge">
-												<input required id="zip" tabindex="" size="10" name="zip" type="text" value="" class="input-xlarge">
-																						
-											</div>
-										</div>
+								<li id="li_1" >
+								<span >
+									<input id="element_1_1" name= "firstname" class="element text" maxlength="50" size="8" value="<?php echo $firstname ;?>"/>
+									<label>First</label>
+									
+									<input id="element_1_2" name= "lastname" class="element text" maxlength="50" size="14" value="<?php echo $lastname ;?>" />
+									<label>Last</label>
+								
+								</span>
+ 
+								</li>		<li id="li_2" >
+								<label class="description" for="element_2">Address </label>
+								
+								<div>
+									<input id="element_2_1" name="address1" class="element text large" value="<?php echo $address1 ;?>" type="text">
+									<label for="element_2_1">Street Address</label>
+								</div>
+							
+								<div>
+									<input id="element_2_2" name="address2" class="element text large" value="<?php echo $address2 ;?>" type="text">
+									<label for="element_2_2">Address Line 2</label>
+								</div>
+							
+								<div class="left">
+									<input id="element_2_3" name="city" class="element text medium" value="<?php echo $city ;?>" type="text">
+									<label for="element_2_3">City</label>
+								</div>
+							
+								<div class="right">
+									<input id="element_2_4" name="state" size = '3' class="element text medium" value="<?php echo $state ;?>" type="text">
+									<label for="element_2_4">State</label>
+								</div>
+							
+								<div class="left">
+									<input id="element_2_5" name="zipcode"size = '10' class="element text medium" maxlength="15" vvalue="<?php echo $zipcode ;?>" type="text">
+									<label for="element_2_5">Zip Code</label>
+								</div>
+							
+								</li>		<li id="li_3" >
+								<label class="description" for="element_3">Phone </label>
+								<span>
+									<input id="element_3_1" name="phone" class="element text" size="12" maxlength="3" value="" type="text">
+									<label for="element_3_1">###-###-####</label>
+								</span>
+							
+								 
+								</li>	
+									
+						<li class="buttons">
+									
+					<button onclick="saveUser()"  type="button " class="btn btn-succes btn-large">Save Profile</button>
+					<button tabindex="3" type="submit" class="btn btn-succes btn-large">Cancel</button>
+								</li>
+									</ul>
 
-										<div class="actions">
-					<button onclick="saveProfile()"  type="button " class="btn btn-succes btn-large">Save Profile</button>
-					<button tabindex="3" type="button" class="btn btn-succes btn-large">Cancel</button>
-										</div>
-									</fieldset>
-							</div>
-							<!-- end: Contact Form -->
-						</div>
-			<!-- end: Contact Form -->
+	
 
+		
+	<!-- start: Container -->
 
+	<!-- end: Map -->
 
-		</div>
-
-			<!-- end: Map -->
-
-	</div>
+		
 		<!-- end: Container  -->
 
 		<!-- start: Container -->
@@ -262,7 +349,7 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
 
 			</div>
 			<!-- end: Contact Form -->
-
+		</div>
 			<!-- start: Social Sites -->
 			<div class="span7">
 				<div class="title"><h4>Follow US!</h4></div>
