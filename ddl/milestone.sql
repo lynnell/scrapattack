@@ -38,7 +38,12 @@ CREATE TABLE IF NOT EXISTS `milestone` (
 INSERT INTO `milestone` (`milestoneid`, `parentid`, `milestone_cd`, `milestone_value`, `timestamp`) VALUES
 ('1', '152253e6-ccf8-11e3-b2d7-00ffd0', '1', 'Ball', '2014-04-27 00:00:37');
 
--- --------------------------------------------------------
+INSERT INTO `milestone` (`milestoneid`, `parentid`, `milestone_cd`, `milestone_value`) VALUES ('1000000007', '152253e6-ccf8-11e3-b2d7-00ffd0', '1', 'bigDog');
+
+INSERT INTO `milestone` (`parentid`, `milestone_cd`, `milestone_value`) VALUES ('152253e6-ccf8-11e3-b2d7-00ffd0', '1', 'bigDog')
+
+-- ---------------------------------
+-----------------------
 
 --
 -- Table structure for table `milestoneLookup`
