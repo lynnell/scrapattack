@@ -47,8 +47,7 @@ $num_rows = mysql_num_rows($qry);
 
 <script>
  
-
- function saveUser()
+function saveUser()
 {
  var firstName = document.getElementById("firstname").value;
  var lastName = document.getElementById("lastName").value;
@@ -57,7 +56,7 @@ $num_rows = mysql_num_rows($qry);
  var address1 = document.getElementById("address1").value;
  var address2 = document.getElementById("address2").value;
  var city = document.getElementById("city").value;
- var state = document.getElementById("+state").value;
+ var state = document.getElementById("state").value;
  var phone = document.getElementById("phone").value;
  var uid = document.getElementById("uid").value;
  }
@@ -81,10 +80,7 @@ if (window.XMLHttpRequest)
 	xmlhttp.send();
  }
  </script>
- 
-
-
-	<!-- start: Meta -->
+ 	<!-- start: Meta -->
 	<meta charset="utf-8">
 	<title>ScrapAttack - Contact</title>
 	<meta name="description" content="FreeME:Bootstrap Theme"/>

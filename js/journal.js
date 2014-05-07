@@ -3,17 +3,17 @@ $(document).ready(function() {
 	//##### send add record Ajax request to response.php #########
 	$("#JournalSubmit").click(function (e) {
 			e.preventDefault();
-			if($("#contentText").val()==='')
+			if($("#ournal_title").val()==='')
 			{
 				alert("Please enter journal!");
 				return false;
 			}
 		 	var myData = 'journal_text='+ $("#journal_text").val(); //build a post data structure
-		 	var myData = 'journal_date='+ $("#journal_date").val(); //build a post data structure			
-		 	var myData = 'journal_title='+ $("#journal_title").val(); //build a post data structure			
+		 	var myData =+ 'journal_date='+ $("#journal_date").val(); //build a post data structure			
+		 	var myData =+ 'journal_title='+ $("#journal_title").val(); //build a post data structure			
 			jQuery.ajax({
 			type: "POST", // HTTP method POST or GET
-			url: "../include/response.php", //Where to make Ajax calls
+			url: "../include/saveJournal.php", //Where to make Ajax calls
 			dataType:"text", // Data type, HTML, json etc.
 			data:myData, //Form variables
 			success:function(response){
@@ -36,7 +36,7 @@ $(document).ready(function() {
 		 
 			jQuery.ajax({
 			type: "POST", // HTTP method POST or GET
-			url: "../include/response.php", //Where to make Ajax calls
+			url: "../include/saveJournal.php", //Where to make Ajax calls
 			dataType:"text", // Data type, HTML, json etc.
 			data:myData, //Form variables
 			success:function(response){

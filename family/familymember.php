@@ -55,10 +55,36 @@ else
 
 <html lang="en">
 <head>
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>ScrapAttack - Contact</title>
+	<meta name="description" content="FreeME:Bootstrap Theme"/>
+	<meta name="keywords" content="Template, Theme, web, html5, css3" />
+	<meta name="author" content="Łukasz Holeczek from creativeLabs"/>
+	<!-- end: Meta -->
+
+	<!-- start: Mobile Specific -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- end: Mobile Specific -->
+
+	<!-- start: Facebook Open Graph -->
+	<meta property="og:title" content=""/>
+	<meta property="og:description" content=""/>
+	<meta property="og:type" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:image" content=""/>
+	<!-- end: Facebook Open Graph -->
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>        
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>        
+
+ <!-- this has to be custom for each tab MUST LOAD AFTER JQUERY -->
+<script type="text/javascript" src="../js/journal.js"></script>  	
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>	
 
 <script>
- 
-
  function saveUser()
 {
  var firstName = document.getElementById("firstname").value;
@@ -101,31 +127,8 @@ function addList()
 }
 
  </script>
- 
-
-
-	<!-- start: Meta -->
-	<meta charset="utf-8">
-	<title>ScrapAttack - Contact</title>
-	<meta name="description" content="FreeME:Bootstrap Theme"/>
-	<meta name="keywords" content="Template, Theme, web, html5, css3" />
-	<meta name="author" content="Łukasz Holeczek from creativeLabs"/>
-	<!-- end: Meta -->
-
-	<!-- start: Mobile Specific -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!-- end: Mobile Specific -->
-
-	<!-- start: Facebook Open Graph -->
-	<meta property="og:title" content=""/>
-	<meta property="og:description" content=""/>
-	<meta property="og:type" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:image" content=""/>
-	<!-- end: Facebook Open Graph -->
-
-    <!-- start: CSS -->
-	<link href="../css/liststyle.css" rel="stylesheet" type="text/css" />
+     <!-- start: CSS -->
+  	<link href="../css/liststyle.css" rel="stylesheet" type="text/css" />
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/bootstrap-responsive.css" rel="stylesheet">
 	<link href="../css/style.css" rel="stylesheet"> 
@@ -133,48 +136,25 @@ function addList()
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Boogaloo">
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
-
-      
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>        
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>        
-<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />         
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
- <!-- this has to be custom for each tab MUST LOAD AFTER JQUERY -->
-<script type="text/javascript" src="../js/journal.js"></script>  	
-	
-	
-	
-	
-	
+	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"> 
 	<!-- end: CSS -->
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-
-	
 </head>
-<body>
 
+<body>
 	<!--start: Wrapper -->
 	<div id="wrapper">
-
 		<!--start: Container -->
 		<div class="container">
-
-
-		
-		
-
 			<!--start: Header -->
 			<header>
-
 				<!--start: Row -->
 				<div class="row">
-
 					<!--start: Logo -->
 					<div class="logo span4">
 						<a class="brand" href="index.html"><img src="../img/logo.png"></a>
@@ -320,11 +300,7 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 			<div class="tab-content" id="tab2">
 			
 				<div class="title" ><h3>Milestone Moments For <?php echo $firstname ." ". $middlename ?></h3></div>
-
-<<<<<<< HEAD
-	
-=======
-								<ul style="height: 400px; overflow-y: scroll;" id="responds">
+						<ul style="height: 400px; overflow-y: scroll;" id="responds">
 												<?php
 												
 												//$result = getMilestoneList($fid) ;
@@ -350,29 +326,28 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 												
 								</ul>
 													<div class="form_style">
-													<p><h4>Add a milestone with three easy steps!</h4></p>
-													<p><h5>1. Make a selection from the drop down</h5></p>
-												
-													<?php
-													$queryLookup2 = "SELECT milestone_cd, milestone_desc from milestoneLookup where milestoneType = 'First Years';";
+													<?php?
+													$queryLookup2 = "SELECT milestone_cd, milestone_desc from milestoneLookup where milestone_type = 'First Years';";
 												  	$resultLookup2 = mysql_query($queryLookup2);
-
-												  	echo '<select name="testMilestoneDropdown">';
 												  	while($res2=mysql_fetch_array($resultLookup2))
 												  	{
-													echo '<option value="">'.$res2["milestone_desc"].'</option>';
-													}
+													echo '<select name='"testMilestoneDropdown"'>';
+													echo '<option value='""'>'.$res2["milestone_desc"]'.</option>';
 													echo '</select>';
-													
+
+													//<select id = "milestoneDropdown"> 
+													//	<option value="Milk">Fresh Milk</option>
+													}
+
+													//close db connection
+
 													?>
-													<p><h5>2. Enter the text</h5></p>
-													<p><input name="content_txt" id="contentText"></input></p>
-													<!--<textarea name="content_txt" id="contentText" cols="45" rows="1"></textarea>-->
-													<p><h5>3. Click "Add Milestone".</h5></p> 			
-													<button id="MilestoneSubmit">Add Milestone</button>
+
+													<textarea name="content_txt" id="contentText" cols="45" rows="1"></textarea>
+													<button id="FormSubmit">Add Milestone</button>
 													</div>
 
->>>>>>> eb57d796014471c7494c23671c9678da62bee872
+
 			</div> <!-- end tab 2 -->
 			
 			<div class="tab-content" id="tab3">
@@ -395,14 +370,16 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 												}
 
 												//close db connection
-												mysql_close($link);
+
 												?>
 								</ul>
+													<hr>
+													<br>
 													<div class="form_style">
-														<input  id="journal_date"  size="20" name="journal_date"  type="text" value="">
-														<input  id="journal_title" size="20" name="journal_title" type="text" value="">
-														<textarea name="journal_text" id="journal_text" cols="45" rows="5"></textarea>
-													<button id="JournalSubmit">Add Journal</button>
+														Date:<p><input id="journal_date"  size="20" name="journal_date"  type="text" value=""><br>
+														Journal Title:<p><input  id="journal_title" size="20" name="journal_title" type="text" value=""><br>
+														Journal Entry:<p><textarea name="journal_text" id="journal_text" cols="45" rows="5"></textarea><br>
+														<button id="JournalSubmit">Add Journal</button>
 													</div>
 			</div> <!-- end tab 3 -->
 				
