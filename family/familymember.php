@@ -366,25 +366,19 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 													//close db connection
 
 													?>
-<<<<<<< HEAD
+
 													<p><h5>2. Enter the text</h5></p>
 													<p><input name="test1" id="test2" type="hidden" value="test3"></input></p>
 													<p><input name="content_txt" id="contentText"></input></p>
 													<!--<textarea name="content_txt" id="contentText" cols="45" rows="1"></textarea>-->
 													<p><h5>3. Click "Add Milestone".</h5></p> 			
 													<button id="MilestoneSubmit">Add Milestone</button>
-=======
 
 													<textarea name="content_txt" id="contentText" cols="45" rows="1"></textarea>
 													<button id="FormSubmit">Add Milestone</button>
->>>>>>> 6e418bc944fecdbb5842ca356aee7949f9f251cc
 													</div>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a5c429451b2c996ac0939a2f63e4091b5796ac26
-			</div> <!-- end tab 2 -->
+		</div> <!-- end tab 2 -->
 			
 			<div class="tab-content" id="tab3">
 							<div class="title" ><h3>Loving Thoughts For <?php echo $firstname ." ". $middlename ?></h3></div>
