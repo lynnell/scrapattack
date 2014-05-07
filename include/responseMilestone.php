@@ -2,20 +2,20 @@
 //include db configuration file
 include("../include/config.php"); //including config.php in our file
 
-//echo "Made it here 1";
+echo "Made it here 1";
 
 if(isset($_POST["content_txt"]) && strlen($_POST["content_txt"])>0) 
 {	//check $_POST["content_txt"] is not empty
 
-	//echo "Made it here 2";
+	echo "Made it here 2";
 
 	//sanitize post value, PHP filter FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH Strip tags, encode special characters.
 	$contentToSave = filter_var($_POST["content_txt"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
 	$milestoneCd = filter_var($_POST["milestoneDropdown"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
 
 
-	//echo $contentToSave;
-	//echo $milestoneCd;
+	echo $contentToSave;
+	echo $milestoneCd;
 
 	// Insert sanitize string in record
 	if(mysql_query("INSERT INTO milestone(parentid, milestone_cd, milestone_value) VALUES('152253e6-ccf8-11e3-b2d7-00ffd0', '1', '".$contentToSave."')"))
