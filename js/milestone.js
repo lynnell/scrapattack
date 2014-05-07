@@ -2,7 +2,8 @@ $(document).ready(function() {
 
 	//##### send add record Ajax request to responseMilestone.php #########
 	$("#MilestoneSubmit").click(function (e) {
-		alert("Enter milestone A");
+		
+			alert("In milestone.js 1");
 			e.preventDefault();
 			if($("#contentText").val()==='')
 			{

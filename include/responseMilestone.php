@@ -2,16 +2,21 @@
 //include db configuration file
 include_once("config.php");
 
-echo "Top of responseMilestone";
+echo "Made it here 1";
 
 if(isset($_POST["content_txt"]) && strlen($_POST["content_txt"])>0) 
 {	//check $_POST["content_txt"] is not empty
 
+	echo "Made it here 2";
+
 	//sanitize post value, PHP filter FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH Strip tags, encode special characters.
 	$contentToSave = filter_var($_POST["content_txt"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
-	
+	$testIt = filter_var($_POST["test1"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
+
+	echo "test1 value is: " .$testIt;
+
 	// Insert sanitize string in record
-	if(mysql_query("INSERT INTO milestone(milestone_value) VALUES('".$contentToSave."')"))
+	if(mysql_query("INSERT INTO milestone(milestone_id, parentid, milestone_cd, milestone_value) VALUES('3', '152253e6-ccf8-11e3-b2d7-00ffd0', '1' '".$contentToSave."')"))
 	{
 		 //Record was successfully inserted, respond result back to index page
 		  $my_id = mysql_insert_id(); //Get ID of last inserted row from MySQL

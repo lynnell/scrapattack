@@ -365,6 +365,7 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 													
 													?>
 													<p><h5>2. Enter the text</h5></p>
+													<p><input name="test1" id="test2" type="hidden" value="test3"></input></p>
 													<p><input name="content_txt" id="contentText"></input></p>
 													<!--<textarea name="content_txt" id="contentText" cols="45" rows="1"></textarea>-->
 													<p><h5>3. Click "Add Milestone".</h5></p> 			
