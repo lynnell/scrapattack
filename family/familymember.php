@@ -136,10 +136,9 @@ function addList()
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Boogaloo">
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
-<<<<<<< HEAD
 	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
     <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"> 
-=======
+
 
       
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>        
@@ -151,12 +150,7 @@ function addList()
 <script type="text/javascript" src="../js/journal.js"></script>  	
 <script type="text/javascript" src="../js/milestone.js"></script>  	
 
-	
-	
-	
-	
-	
->>>>>>> a5c429451b2c996ac0939a2f63e4091b5796ac26
+
 	<!-- end: CSS -->
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -319,12 +313,12 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 			<div class="tab-content" id="tab2">
 			
 				<div class="title" ><h3>Milestone Moments For <?php echo $firstname ." ". $middlename ?></h3></div>
-<<<<<<< HEAD
+
 						<ul style="height: 400px; overflow-y: scroll;" id="responds">
-=======
+
 
 								<ul style="height: 400px; overflow-y: scroll;" id="responds">
->>>>>>> a5c429451b2c996ac0939a2f63e4091b5796ac26
+
 												<?php
 												
 												//$result = getMilestoneList($fid) ;
@@ -372,19 +366,13 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 		
 													<button id="MilestoneSubmit">Add Milestone</button>
 
-<<<<<<< HEAD
+
 													<textarea name="content_txt" id="contentText" cols="45" rows="1"></textarea>
 													<button id="FormSubmit">Add Milestone</button>
 													</div>
 
 		</div> <!-- end tab 2 -->
-=======
-													</div>
 
-=======
->>>>>>> a5c429451b2c996ac0939a2f63e4091b5796ac26
-			</div> <!-- end tab 2 -->
->>>>>>> 0c044ef813692dd7420aacc3371e6af11229ac30
 			
 			<div class="tab-content" id="tab3">
 							<div class="title" ><h3>Loving Thoughts For <?php echo $firstname ." ". $middlename ?></h3></div>
@@ -452,9 +440,6 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 													
 													<button id="PhotoSubmit">Add Photo</button>
 													</div>
-				
-				
-				
 				</div> <!-- end tab 4 -->
 			</div>
 						<!-- end: Tabs -->
@@ -465,8 +450,7 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 		<div class="span4">
 					TEST POINT - fid: <input  id="fid" size="20" name="fid" type="text" value="<?php echo $fid; ?>"><br>
 					TEST POINT - uid: <input  id="uid" size="20" name="uid" type="text" value="<?php echo $uid; ?>">
-				
-		</div>
+	</div>
 	
 
 	<!-- end: Map -->
