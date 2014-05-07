@@ -314,13 +314,13 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
 
 									<li><a href="index.html">Home</a></li>
 
-									<li><a href="about.html">About</a></li>
+									<li><a href="about.php">About</a></li>
 
 									<!-- <li><a href="services.html">Services</a></li>
 
 									<li><a href="pricing.html">Pricing</a></li> -->
 
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="contact.php">Contact</a></li>
 
 								</ul>
 

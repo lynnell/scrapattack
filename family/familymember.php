@@ -350,35 +350,41 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 												
 								</ul>
 													<div class="form_style">
-													<?php?
-													$queryLookup2 = "SELECT milestone_cd, milestone_desc from milestoneLookup where milestone_type = 'First Years';";
+													<?php
+													$queryLookup2 = "SELECT milestone_cd, milestone_desc from milestoneLookup where milestoneType = 'First Years';";
 												  	$resultLookup2 = mysql_query($queryLookup2);
 												  	while($res2=mysql_fetch_array($resultLookup2))
 												  	{
-													echo '<select name='"testMilestoneDropdown"'>';
-													echo '<option value='""'>'.$res2["milestone_desc"]'.</option>';
-													echo '</select>';
-
-													//<select id = "milestoneDropdown"> 
-													//	<option value="Milk">Fresh Milk</option>
+												  	
+												  	echo "<select name='milestoneDropdown' id='milestoneDropdown' >";
+													echo "<option value='".$res2["milestone_cd"]."'>".$res2["milestone_desc"]."</option>";
+													echo "</select>";
+													
 													}
-
-													//close db connection
 
 													?>
 
 													<p><h5>2. Enter the text</h5></p>
-													<p><input name="test1" id="test2" type="hidden" value="test3"></input></p>
+													
 													<p><input name="content_txt" id="contentText"></input></p>
-													<!--<textarea name="content_txt" id="contentText" cols="45" rows="1"></textarea>-->
+													
 													<p><h5>3. Click "Add Milestone".</h5></p> 			
+		
 													<button id="MilestoneSubmit">Add Milestone</button>
 
+<<<<<<< HEAD
 													<textarea name="content_txt" id="contentText" cols="45" rows="1"></textarea>
 													<button id="FormSubmit">Add Milestone</button>
 													</div>
 
 		</div> <!-- end tab 2 -->
+=======
+													</div>
+
+=======
+>>>>>>> a5c429451b2c996ac0939a2f63e4091b5796ac26
+			</div> <!-- end tab 2 -->
+>>>>>>> 0c044ef813692dd7420aacc3371e6af11229ac30
 			
 			<div class="tab-content" id="tab3">
 							<div class="title" ><h3>Loving Thoughts For <?php echo $firstname ." ". $middlename ?></h3></div>

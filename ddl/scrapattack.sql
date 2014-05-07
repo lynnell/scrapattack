@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2014 at 08:18 AM
+-- Generation Time: May 06, 2014 at 10:04 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -78,6 +78,49 @@ INSERT INTO `journal` (`journalid`, `parentid`, `journal_note`, `journal_title`,
 (1000007, '1', 'note note note note note note note note note note note note', 'title title tile title', '2014-04-29 22:58:07'),
 (1000008, '1', 'row note 2', 'title 1', '2014-04-29 23:08:12'),
 (1000009, '1', 'row note 1', 'title 1', '2014-04-29 23:17:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `milestone`
+--
+
+CREATE TABLE IF NOT EXISTS `milestone` (
+  `milestoneid` char(30) NOT NULL DEFAULT '',
+  `parentid` char(30) NOT NULL,
+  `milestone_cd` char(30) NOT NULL,
+  `milestone_value` varchar(300) NOT NULL,
+  `milestone_timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY `milestoneid` (`milestoneid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `milestone`
+--
+
+INSERT INTO `milestone` (`milestoneid`, `parentid`, `milestone_cd`, `milestone_value`, `milestone_timestamp`) VALUES
+('1', '152253e6-ccf8-11e3-b2d7-00ffd0', '1', 'Ball', '2014-04-27 00:00:37');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `milestonelookup`
+--
+
+CREATE TABLE IF NOT EXISTS `milestonelookup` (
+  `milestone_cd` char(30) NOT NULL DEFAULT '',
+  `milestone_desc` varchar(300) NOT NULL,
+  `milestoneType` varchar(50) NOT NULL,
+  UNIQUE KEY `milestone_cd` (`milestone_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `milestonelookup`
+--
+
+INSERT INTO `milestonelookup` (`milestone_cd`, `milestone_desc`, `milestoneType`) VALUES
+('1', 'First Word', ''),
+('2', 'Favorite Toy', 'First Years');
 
 -- --------------------------------------------------------
 

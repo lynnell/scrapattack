@@ -3,7 +3,7 @@ $(document).ready(function() {
 	//##### send add record Ajax request to responseMilestone.php #########
 	$("#MilestoneSubmit").click(function (e) {
 		
-			alert("In milestone.js 1");
+			//alert("In milestone.js 1");
 			e.preventDefault();
 			if($("#contentText").val()==='')
 			{
@@ -11,6 +11,15 @@ $(document).ready(function() {
 				return false;
 			}
 		 	var myData = 'content_txt='+ $("#contentText").val(); //build a post data structure
+		 	alert("myData part1 is: " + myData);
+		 	//var myData =+ 'milestoneDropdown='+ $("#milestoneDropdown").val(); //build a post data structure
+
+		 	alert("milestoneDropdown is: " + document.getElementById("#milestoneDropdown").value);
+
+
+		 	var myData =+ 'milestoneDropdown='+ $("#milestoneDropdown").val();
+		 	alert("myData part2 is: " + myData);
+
 			jQuery.ajax({
 			type: "POST", // HTTP method POST or GET
 			url: "../include/responseMilestone.php", //Where to make Ajax calls

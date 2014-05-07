@@ -2,7 +2,7 @@ http://localhost/scrapattack/include/saveChild.php?firstName=Maaarrrryyy&fid=152
 
 http://localhost/scrapattack/include/saveJournal.php?fid=1&journal_title=blah&journal_text=cover john face
 
-	
+http://localhost/scrapattack/include/responseMilestone.php?content_txt=blah&milestoneDropdown=cover	
 
 
 
