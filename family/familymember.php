@@ -353,15 +353,22 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 													<?php
 													$queryLookup2 = "SELECT milestone_cd, milestone_desc from milestoneLookup where milestoneType = 'First Years';";
 												  	$resultLookup2 = mysql_query($queryLookup2);
+												  	echo '<select name="milestoneDropdown" id="milestoneDropdown" >';
 												  	while($res2=mysql_fetch_array($resultLookup2))
 												  	{
 												  	
-												  	echo "<select name='milestoneDropdown' id='milestoneDropdown' >";
-													echo "<option value='".$res2["milestone_cd"]."'>".$res2["milestone_desc"]."</option>";
-													echo "</select>";
+												  	//echo "<select name='milestoneDropdown' id='milestoneDropdown' >";
+													//echo "<option value='".$res2["milestone_cd"]."'>".$res2["milestone_desc"]."</option>";
+													//echo "</select>";
 													
-													}
+													
+													echo '<option value="'.$res2["milestone_cd"].'">'.$res2["milestone_desc"].'</option>';
+													//echo '<option value="1">Fav Color</option>';
+													
 
+													}
+													echo '</select>';
+													
 													?>
 
 													<p><h5>2. Enter the text</h5></p>
