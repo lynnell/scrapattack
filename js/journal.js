@@ -11,6 +11,9 @@ $(document).ready(function() {
 		 	var myData = 'journal_text='+ $("#journal_text").val(); //build a post data structure
 		 	var myData =+ 'journal_date='+ $("#journal_date").val(); //build a post data structure			
 		 	var myData =+ 'journal_title='+ $("#journal_title").val(); //build a post data structure			
+			
+			alert(myData);
+			
 			jQuery.ajax({
 			type: "POST", // HTTP method POST or GET
 			url: "../include/saveJournal.php", //Where to make Ajax calls

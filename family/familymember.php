@@ -454,7 +454,9 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 	<!-- start: Container -->
 
 		<div class="span4">
-					TEST POINT - fid: <input  id="fid" size="20" name="fid" type="text" value="<?php echo $fid; ?>">
+					TEST POINT - fid: <input  id="fid" size="20" name="fid" type="text" value="<?php echo $fid; ?>"><br>
+					TEST POINT - uid: <input  id="uid" size="20" name="uid" type="text" value="<?php echo $uid; ?>">
+				
 		</div>
 	
 

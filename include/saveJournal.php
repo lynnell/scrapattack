@@ -1,19 +1,19 @@
 <?php
-if(isset($_POST["journal_title"]))
+include("../include/config.php"); //including config.php in our file
+
+echo "point 1";
+if(isset($_GET["journal_title"]))
 // && strlen($_POST["journal_title"])>0)
  {	//check $_POST["content_txt"] is not empty
-
+echo "point 2";
 	//sanitize post value, PHP filter FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH Strip tags, encode special characters.
-	$journal_date = filter_var($_POST["journal_date"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
-	$journal_title = filter_var($_POST["journal_title"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
-	$journal_text = filter_var($_POST["journal_text"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
-	
+	//$journal_date = filter_var($_GET["journal_date"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
+	$journal_title = filter_var($_GET["journal_title"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
+	$journal_text = filter_var($_GET["journal_text"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
+	$fid = $_GET["fid"]; 
 	// Insert sanitize string in record
-	echo "INSERT INTO journal(journal_note,journal_date,journal_text) VALUES("'".journal_note."','".journal_date."','".journal_text'")";
-	
-	if(mysql_query("INSERT INTO journal(journal_note,journal_date,journal_text) VALUES("'".journal_note."','".journal_date."','".journal_text'")"))
+	if(mysql_query("INSERT INTO journal(parentid,journal_title,journal_note) VALUES('".$fid."','".$journal_title."','".$journal_text."')"))
 	{
-	
 		 //Record was successfully inserted, respond result back to index page
 		  $my_id = mysql_insert_id(); //Get ID of last inserted row from MySQL
 		  echo '<li id="item_'.$my_id.'">';
@@ -33,7 +33,7 @@ if(isset($_POST["journal_title"]))
 }
 elseif(isset($_POST["recordToDelete"]) && strlen($_POST["recordToDelete"])>0 && is_numeric($_POST["recordToDelete"]))
 {	//do we have a delete request? $_POST["recordToDelete"]
-
+echo "point 3";
 	//sanitize post value, PHP filter FILTER_SANITIZE_NUMBER_INT removes all characters except digits, plus and minus sign.
 	$idToDelete = filter_var($_POST["recordToDelete"],FILTER_SANITIZE_NUMBER_INT); 
 	
