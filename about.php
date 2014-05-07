@@ -219,7 +219,7 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
 				      	<!-- end: Skills -->
 
 						<!-- start: Tabs -->
-						<div class="title"><h3>Tabs</h3></div>
+						<div class="title"><h3>Helpful Videos</h3></div>
 
 						<ul class="tabs-nav">
 							<li class="active"><a href="#tab1"><i class="mini-ico-glass"></i>Intro</a></li>
@@ -341,7 +341,7 @@ Let the commenting out end! -->
 
 									<li><a href="index.html">Home</a></li>
 
-									<li><a href="about.html">About</a></li>
+									<li><a href="about.php">About</a></li>
 
 <!-- Let the commenting out begin!
 									<li><a href="services.html">Services</a></li>
@@ -349,7 +349,7 @@ Let the commenting out end! -->
 									<li><a href="pricing.html">Pricing</a></li>
 Let the commenting out end! -->
 
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="contact.php">Contact</a></li>
 
 								</ul>
 
