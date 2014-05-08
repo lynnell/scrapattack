@@ -351,31 +351,25 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 												  	while($res2=mysql_fetch_array($resultLookup2))
 												  	{
 												  	
-												  	//echo "<select name='milestoneDropdown' id='milestoneDropdown' >";
-													//echo "<option value='".$res2["milestone_cd"]."'>".$res2["milestone_desc"]."</option>";
-													//echo "</select>";
-													
-													
 													echo '<option value="'.$res2["milestone_cd"].'">'.$res2["milestone_desc"].'</option>';
 													//echo '<option value="1">Fav Color</option>';
-													
-
+												
 													}
 													echo '</select>';
 													
 													?>
 
-													<p><h5>2. Enter the text</h5></p>
-													
+													<p><h5>2. Enter the text</h5></p>													
 													<p><input name="content_txt" id="contentText"></input></p>
 													
-													<p><h5>3. Click "Add Milestone".</h5></p> 			
-		
+													<p><h5>TEST DROPDOWN</h5></p>													
+													<p><select name="milestoneDropdownTEST" id="milestoneDropdownTEST">
+														<option value "1">John</option>
+														<option value "2" selected>Lynnell</option>
+														</select></p>
+
+													<p><h5>3. Click "Add Milestone".</h5></p> 					
 													<button id="MilestoneSubmit">Add Milestone</button>
-
-
-													<textarea name="content_txt" id="contentText" cols="45" rows="1"></textarea>
-													<button id="FormSubmit">Add Milestone</button>
 													</div>
 
 		</div> <!-- end tab 2 -->

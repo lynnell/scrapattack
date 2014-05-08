@@ -12,12 +12,20 @@ $(document).ready(function() {
 			}
 		 	var myData = 'content_txt='+ $("#contentText").val(); //build a post data structure
 		 	alert("myData part1 is: " + myData);
-		 	//var myData =+ 'milestoneDropdown='+ $("#milestoneDropdown").val(); //build a post data structure
-
-		 	alert("milestoneDropdown is: " + document.getElementById("#milestoneDropdown").value);
 
 
-		 	var myData =+ 'milestoneDropdown='+ $("#milestoneDropdown").val();
+		 	var a = document.getElementById("#milestoneDropdownTEST");
+
+		 	alert($('#milestoneDropdownTEST').val());
+
+		 	//var myDataDROPDOWN = 'milestoneDropdown='+ $(document.getElementById("#milestoneDropdown").val()); //build a post data structure
+		 	//alert("myData part1 is: " + myDataDROPDOWN);
+
+
+		 	//alert("milestoneDropdown is: " + document.getElementById("#milestoneDropdown").value);
+		 	//alert("milestoneDropdown is: " + $(document.getElementById("#milestoneDropdown").val()));
+
+		 	var myData = myData + 'milestoneDropdownTEST='+ $("#milestoneDropdownTEST").val();
 		 	alert("myData part2 is: " + myData);
 
 			jQuery.ajax({
