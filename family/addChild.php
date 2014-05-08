@@ -48,21 +48,9 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/config.php"); //includin
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-  
-  <script>
-  $(document).ready(function() {
-    $("#datepicker").datepicker();
-  });
-  
-  
-  function loadJournal()
-  {
-  alert("test");
-  }
-  
-  
-  
-  </script>
+<!-- this has to be custom for each tab MUST LOAD AFTER JQUERY -->
+<script type="text/javascript" src="../js/child.js"></script>  
+
 		
 </head>
 <body>
@@ -173,12 +161,12 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
 	
 			<!-- start: Contact Form -->
 					<div class="span3">
-							<div class="title"><h4>Edit Profile</h4></div>
+							<div class="title"><h4>Add Family Member</h4></div>
 							<!-- start: Contact Form -->
 							<div id="contact-form">
 									<fieldset>
 										<div class="clearfix">
-										<label for="age"><span>Profile Name</span></label>
+										<label for="age"><span>Name</span></label>
 											<div class="input">
 												<input required id="firstname" tabindex="" size="25" name="firstname" type="text" value="" class="input-xlarge">
 												<input required id="lastname" tabindex="" size="25" name="lastname" type="text" value="" class="input-xlarge">
@@ -186,19 +174,15 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
 										</div>
 									
 										<div class="clearfix">
-											<label for="message"><span>Address</span></label>
+											<label for="message"><span>Birthdate</span></label>
 											<div class="input">
-												<input required id="address1" tabindex="" size="30" name="address1" type="text" value="" class="input-xlarge">
-												<input required id="address2" tabindex="" size="30" name="address2" type="text" value="" class="input-xlarge">
-												<input required id="city" tabindex="" size="30" name="city" type="text" value="" class="input-xlarge">
-												<input required id="state" tabindex="" size="2" name="state" type="text" value="" class="input-xlarge">
-												<input required id="zip" tabindex="" size="10" name="zip" type="text" value="" class="input-xlarge">
+												<input required id="birthdate" tabindex="" size="30" name="birthdate" type="text" value="" class="input-xlarge">
 																						
 											</div>
 										</div>
 
 										<div class="actions">
-					<button onclick="saveProfile()"  type="button " class="btn btn-succes btn-large">Save Profile</button>
+					<button onclick="saveMember()"  type="button " class="btn btn-succes btn-large">Save Family Member</button>
 					<button tabindex="3" type="button" class="btn btn-succes btn-large">Cancel</button>
 										</div>
 									</fieldset>

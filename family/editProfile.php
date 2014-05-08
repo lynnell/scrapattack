@@ -48,22 +48,9 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/include/config.php"); //includin
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-  
-  <script>
-  $(document).ready(function() {
-    $("#datepicker").datepicker();
-  });
-  
-  
-  function loadJournal()
-  {
-  alert("test");
-  }
-  
-  
-  
-  </script>
-		
+<!-- this has to be custom for each tab MUST LOAD AFTER JQUERY -->
+<script type="text/javascript" src="../js/profile.js"></script>  
+  		
 </head>
 <body>
 
@@ -250,9 +237,10 @@ include($_SERVER['DOCUMENT_ROOT']."/scrapattack/session/menu_child.php");
 								</div>
 							</div>
 
-							<div class="actions">
-								<button tabindex="3" type="submit" class="btn btn-succes btn-large">Send message</button>
-							</div>
+										<div class="actions">
+					<button onclick="saveMember()"  type="button " class="btn btn-succes btn-large">Save Profile</button>
+					<button tabindex="3" type="button" class="btn btn-succes btn-large">Cancel</button>
+										</div>
 						</fieldset>
 
 					</form>
