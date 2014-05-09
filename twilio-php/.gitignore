@@ -1,3 +1,5 @@
+config-sms.php.prod
+test-sms.php.prod
 docs/_build/
 vendor/*
 composer.phar
