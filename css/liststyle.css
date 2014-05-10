@@ -9,6 +9,13 @@
 	color: #FFFFFF;
 	margin-top: 5px;
 }
+.form_style #MilestoneSubmit {
+	display: block;
+	background: #003366;
+	border: 1px solid #000066;
+	color: #FFFFFF;
+	margin-top: 5px;
+}
 #responds{
 	margin: 0px;
 	padding: 0px;
@@ -25,6 +32,12 @@
 	font-size: 13px;
 }
 .del_wrapper{float:right;}
+.content_wrapper {
+	max-width: 400px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.delMilestone_wrapper{float:right;}
 .content_wrapper {
 	max-width: 400px;
 	margin-right: auto;

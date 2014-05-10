@@ -2,12 +2,9 @@
 //include db configuration file
 include("../include/config.php"); //including config.php in our file
 
-echo "Made it here 1";
 
 if(isset($_POST["content_txt"]) && strlen($_POST["content_txt"])>0) 
 {	//check $_POST["content_txt"] is not empty
-
-	echo "Made it here 2";
 
 	//sanitize post value, PHP filter FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH Strip tags, encode special characters.
 	$contentToSave = filter_var($_POST["content_txt"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
@@ -18,13 +15,12 @@ if(isset($_POST["content_txt"]) && strlen($_POST["content_txt"])>0)
 	echo $milestoneCd;
 
 	// Insert sanitize string in record
-	if(mysql_query("INSERT INTO milestone(parentid, milestone_cd, milestone_value) VALUES('152253e6-ccf8-11e3-b2d7-00ffd0', '1', '".$contentToSave."')"))
+	if(mysql_query("INSERT INTO milestone(parentid, milestone_cd, milestone_value) VALUES('152253e6-ccf8-11e3-b2d7-00ffd0', '".$milestoneCd."', '".$contentToSave."')"))
 	{
-		echo "Made it here 3";
 		 //Record was successfully inserted, respond result back to index page
 		  $my_id = mysql_insert_id(); //Get ID of last inserted row from MySQL
 		  echo '<li id="item_'.$my_id.'">';
-		  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$my_id.'">';
+		  echo '<div class="delMilestone_wrapper"><a href="#" class="del_button" id="del-'.$my_id.'">';
 		  echo '<img src="../img/icon_del.gif" border="0" />';
 		  echo '</a></div>';
 		  echo $contentToSave.'</li>';
@@ -44,7 +40,9 @@ elseif(isset($_POST["recordToDelete"]) && strlen($_POST["recordToDelete"])>0 && 
 
 	//sanitize post value, PHP filter FILTER_SANITIZE_NUMBER_INT removes all characters except digits, plus and minus sign.
 	$idToDelete = filter_var($_POST["recordToDelete"],FILTER_SANITIZE_NUMBER_INT); 
-	
+	//echo "idToDelete is: ";
+	//echo $idToDelete;
+
 	//try deleting record using the record ID we received from POST
 	if(!mysql_query("DELETE FROM milestone WHERE milestoneid=".$idToDelete))
 	{    

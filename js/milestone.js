@@ -11,22 +11,11 @@ $(document).ready(function() {
 				return false;
 			}
 		 	var myData = 'content_txt='+ $("#contentText").val(); //build a post data structure
-		 	alert("myData part1 is: " + myData);
-
-
-		 	var a = document.getElementById("#milestoneDropdownTEST");
-
-		 	alert($('#milestoneDropdownTEST').val());
-
-		 	//var myDataDROPDOWN = 'milestoneDropdown='+ $(document.getElementById("#milestoneDropdown").val()); //build a post data structure
-		 	//alert("myData part1 is: " + myDataDROPDOWN);
-
-
-		 	//alert("milestoneDropdown is: " + document.getElementById("#milestoneDropdown").value);
-		 	//alert("milestoneDropdown is: " + $(document.getElementById("#milestoneDropdown").val()));
-
-		 	var myData = myData + 'milestoneDropdownTEST='+ $("#milestoneDropdownTEST").val();
-		 	alert("myData part2 is: " + myData);
+		 	//alert("myData part1 is: " + myData);
+		 	
+		 	//var myData = myData + '&milestoneDropdownTEST='+ $("#milestoneDropdownTEST").val();
+		 	var myData = myData + '&milestoneDropdown='+ $("#milestoneDropdown").val();
+		 	//alert("myData part2 is: " + myData);
 
 			jQuery.ajax({
 			type: "POST", // HTTP method POST or GET
@@ -44,11 +33,12 @@ $(document).ready(function() {
 	});
 
 	//##### Send delete Ajax request to responseMilestone.php #########
-	$("body").on("click", "#responds .del_button", function(e) {
-	alert("test point journal.js");
+	$("body").on("click", "#responds .delMilestone_button", function(e) {
+	alert("test point milestone.js");
 		 e.returnValue = false;
 		 var clickedID = this.id.split('-'); //Split string (Split works as PHP explode)
 		 var DbNumberID = clickedID[1]; //and get number from array
+		 //alert(DbNumberID);
 		 var myData = 'recordToDelete='+ DbNumberID; //build a post data structure
 		 
 			jQuery.ajax({
@@ -56,8 +46,11 @@ $(document).ready(function() {
 			url: "../include/responseMilestone.php", //Where to make Ajax calls
 			dataType:"text", // Data type, HTML, json etc.
 			data:myData, //Form variables
+			//alert("BEFORE Made it to success function");
 			success:function(response){
 				//on success, hide  element user wants to delete.
+				alert(myData);
+				//alert("Made it to success function");
 				$('#item_'+DbNumberID).fadeOut("slow");
 			},
 			error:function (xhr, ajaxOptions, thrownError){

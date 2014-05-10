@@ -334,7 +334,7 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 												  $res=mysql_fetch_array($resultLookup);
 												  //echo 'Hey - milestone_desc is: '.$res["milestone_desc"];
 												  echo '<li id="item_'.$resultLookup["milestone_desc"].'">';
-												  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["milestone_cd"].'">';
+												  echo '<div class="delMilestone_wrapper"><a href="#" class="delMilestone_button" id="del-'.$row["milestoneid"].'">';
 												  echo '<img src="../img/icon_del.gif" border="0" />';
 												  echo '</a></div>';
 												  echo  '<p>'.$res["milestone_desc"].': <br><p>'. $row["milestone_value"].'</li>';
@@ -351,8 +351,7 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 												  	while($res2=mysql_fetch_array($resultLookup2))
 												  	{
 												  	
-													echo '<option value="'.$res2["milestone_cd"].'">'.$res2["milestone_desc"].'</option>';
-													//echo '<option value="1">Fav Color</option>';
+													echo '<option value="'.$res2["milestone_cd"].'">'.$res2["milestone_desc"].'</option>';													
 												
 													}
 													echo '</select>';
@@ -362,11 +361,13 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 													<p><h5>2. Enter the text</h5></p>													
 													<p><input name="content_txt" id="contentText"></input></p>
 													
+													<!--
 													<p><h5>TEST DROPDOWN</h5></p>													
 													<p><select name="milestoneDropdownTEST" id="milestoneDropdownTEST">
 														<option value "1">John</option>
 														<option value "2" selected>Lynnell</option>
 														</select></p>
+													-->
 
 													<p><h5>3. Click "Add Milestone".</h5></p> 					
 													<button id="MilestoneSubmit">Add Milestone</button>
