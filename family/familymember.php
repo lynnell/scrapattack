@@ -80,7 +80,6 @@ else
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>        
 
  <!-- this has to be custom for each tab MUST LOAD AFTER JQUERY -->
-<script type="text/javascript" src="../js/journal.js"></script>  	
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>	
 
@@ -310,21 +309,35 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 				<!-- end: Contact Form -->			
 			</div>				
 			
-			<div class="tab-content" id="tab2">
-			
-				<div class="title" ><h3>Milestone Moments For <?php echo $firstname ." ". $middlename ?></h3></div>
+<div class="tab-content" id="tab2">
+		
+	<div class="title" ><h3>Milestone Moments For <?php echo $firstname ." ". $middlename ?></h3></div>
+	<div class="span4">	
+	<div class="form_style">
+				<input id="milestone_value"  size="20" name="milestone_value"  type="text" value=""><br>
+								
+				<?php
+				$queryLookup2 = "SELECT milestone_cd, milestone_desc from milestoneLookup where milestoneType = 'First Years';";
+				$resultLookup2 = mysql_query($queryLookup2);
+				echo '<select name="milestoneDropdown" id="milestoneDropdown" >';
+				while($res2=mysql_fetch_array($resultLookup2))
+				{
+					echo '<option value="'.$res2["milestone_cd"].'">'.$res2["milestone_desc"].'</option>';													
+				}
+				echo '</select>';
+				
+				?><br>
+				
+				3. Click "Add Milestone".<BR> 					
+				<button id="MilestoneSubmit">Add Milestone</button>
+	</div>								
+	</div>	
 
-						<ul style="height: 400px; overflow-y: scroll;" id="responds">
-
-
-								<ul style="height: 400px; overflow-y: scroll;" id="responds">
-
+<div class="span5">
+								<ul style="height: 400px; overflow-y: scroll;" id="milestoneresponds">
 												<?php
-												
 												//$result = getMilestoneList($fid) ;
-
 												$query = "SELECT * from milestone;";
-													
 												$result = mysql_query($query);
 
 												while($row=mysql_fetch_array($result))
@@ -333,86 +346,55 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 												  $resultLookup = mysql_query($queryLookup);
 												  $res=mysql_fetch_array($resultLookup);
 												  //echo 'Hey - milestone_desc is: '.$res["milestone_desc"];
-												  echo '<li id="item_'.$resultLookup["milestone_desc"].'">';
-												  echo '<div class="delMilestone_wrapper"><a href="#" class="delMilestone_button" id="del-'.$row["milestoneid"].'">';
-												  echo '<img src="../img/icon_del.gif" border="0" />';
+												  echo '<li id="item_'.$row["milestoneid"].'">';
+												  echo '<div class="del_wrapper"><a href="#" class="mdel_button" id="del-'.$row["milestoneid"].'">';
+											
+												echo '<img src="../img/icon_del.gif" border="0" />';
 												  echo '</a></div>';
 												  echo  '<p>'.$res["milestone_desc"].': <br><p>'. $row["milestone_value"].'</li>';
 												}
-
 												?>
-												
-								</ul>
-													<div class="form_style">
-													<?php
-													$queryLookup2 = "SELECT milestone_cd, milestone_desc from milestoneLookup where milestoneType = 'First Years';";
-												  	$resultLookup2 = mysql_query($queryLookup2);
-												  	echo '<select name="milestoneDropdown" id="milestoneDropdown" >';
-												  	while($res2=mysql_fetch_array($resultLookup2))
-												  	{
-												  	
-													echo '<option value="'.$res2["milestone_cd"].'">'.$res2["milestone_desc"].'</option>';													
-												
-													}
-													echo '</select>';
-													
-													?>
+											</ul>
+</div>
 
-													<p><h5>2. Enter the text</h5></p>													
-													<p><input name="content_txt" id="contentText"></input></p>
-													
-													<!--
-													<p><h5>TEST DROPDOWN</h5></p>													
-													<p><select name="milestoneDropdownTEST" id="milestoneDropdownTEST">
-														<option value "1">John</option>
-														<option value "2" selected>Lynnell</option>
-														</select></p>
-													-->
-
-													<p><h5>3. Click "Add Milestone".</h5></p> 					
-													<button id="MilestoneSubmit">Add Milestone</button>
-													</div>
-
-		</div> <!-- end tab 2 -->
-
-			
+</div> <!-- end tab 2 -->
 			<div class="tab-content" id="tab3">
-							<div class="title" ><h3>Loving Thoughts For <?php echo $firstname ." ". $middlename ?></h3></div>
+					<div class="span4">		
+					<div class="title" ><h3>Add Thought</h3></div>					
+							<div class="form_style">
+								Date:<p><input id="journal_date"  size="20" name="journal_date"  type="text" value=""><br>
+								Journal Title:<p><input  id="journal_title" size="20" name="journal_title" type="text" value=""><br>
+								Journal Entry:<p><textarea name="journal_text" id="journal_text" cols="45" rows="5"></textarea><br>
+								<button id="JournalSubmit">Add Journal</button>
+							</div>
+					</div>	
+					<div class="span5">	
+					<div class="title" ><h3>Loving Thoughts For <?php echo $firstname ." ". $middlename ?></h3></div>
 
-								<ul style="height: 400px; overflow-y: scroll;" id="responds">
+								<ul style="height: 400px; overflow-y: scroll;" id="journalresponds">
 												<?php
-												//MySQL query - make this a function
 												$Result = mysql_query("SELECT journalid, journal_note,journal_title FROM journal");
-
-												//get all records from add_delete_record table
 												while($row = mysql_fetch_array($Result))
 												{
-												  echo '<li id="item_'.$row["journalid"].'">';
-												  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["journalid"].'">';
-												  echo '<img src="../img/icon_del.gif" border="0" />';
-												  echo '</a></div>';
-												  echo '1-28-2014<br>'; 
-												  echo  '<p>'.$row["journal_title"].'<br><p>'. $row["journal_note"].'</li>';
+												echo '<li id="item_'.$row["journalid"].'">';
+												echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["journalid"].'">';
+												echo '<img src="../img/icon_del.gif" border="0" />';
+												echo '</a></div>';
+												echo '<div class="edit_wrapper"><a href="#" class="edit_button" id="edit-'.$row["journalid"].'">';
+												echo '<img src="../img/icon_edit.gif" border="0" />';
+												echo '</a></div>';												
+												echo '1-28-2014<br>'; 
+												echo  '<p>'.$row["journal_title"].'<br><p>'. $row["journal_note"].'</li>';
 												}
-
-												//close db connection
-
 												?>
 								</ul>
 													<hr>
 													<br>
-													<div class="form_style">
-														Date:<p><input id="journal_date"  size="20" name="journal_date"  type="text" value=""><br>
-														Journal Title:<p><input  id="journal_title" size="20" name="journal_title" type="text" value=""><br>
-														Journal Entry:<p><textarea name="journal_text" id="journal_text" cols="45" rows="5"></textarea><br>
-														<button id="JournalSubmit">Add Journal</button>
-													</div>
+				</div>
+	
+						
 			</div> <!-- end tab 3 -->
-				
-				
-				
-				
-				
+
 				
 				<div class="tab-content" id="tab4">
 							<div class="title" ><h3>Fun Photos For <?php echo $firstname ." ". $middlename ?></h3></div>
@@ -460,112 +442,6 @@ echo '<img src ="data:image/jpeg;base64,'.base64_encode($profile_image).'"/>';
 		</div>
 		<!-- end: Container  -->
 
-		<!-- start: Container -->
-		<div class="container">
-
-			<!-- start: Contact Form -->
-			<div class="span4">
-				<div class="title"><h4>Contact Form</h4></div>
-
-				<!-- start: Contact Form -->
-				<div id="contact-form">
-
-					<form method="post" action="">
-
-						<fieldset>
-							<div class="clearfix">
-								<label for="name"><span>Name:</span></label>
-								<div class="input">
-									<input tabindex="1" size="18" id="name" name="name" type="text" value="">
-								</div>
-							</div>
-
-							<div class="clearfix">
-								<label for="email"><span>Email:</span></label>
-								<div class="input">
-									<input tabindex="2" size="25" id="email" name="email" type="text" value="" class="input-xlarge">
-								</div>
-							</div>
-
-							<div class="clearfix">
-								<label for="message"><span>Message:</span></label>
-								<div class="input">
-									<textarea tabindex="3" class="input-xlarge" id="message" name="body" rows="7"></textarea>
-								</div>
-							</div>
-
-							<div class="actions">
-								<button tabindex="3" type="submit" class="btn btn-succes btn-large">Send message</button>
-							</div>
-						</fieldset>
-
-					</form>
-
-				</div>
-				<!-- end: Contact Form -->
-
-			</div>
-			<!-- end: Contact Form -->
-
-			<!-- start: Social Sites -->
-			<div class="span7">
-				<div class="title"><h4>Follow US!</h4></div>
-				<ul class="social-bookmarks">
-					<li class="aim"><a href="#">aim</a></li>
-					<li class="apple"><a href="#">apple</a></li>
-					<li class="behance"><a href="#">behance</a></li>
-					<li class="blogger"><a href="#">blogger</a></li>
-					<li class="cargo"><a href="#">cargo</a></li>
-					<li class="delicious"><a href="#">delicious</a></li>
-					<li class="deviantart"><a href="#">deviantart</a></li>
-					<li class="digg"><a href="#">digg</a></li>
-					<li class="dopplr"><a href="#">dopplr</a></li>
-					<li class="dribbble"><a href="#">dribbble</a></li>
-					<li class="ember"><a href="#">ember</a></li>
-					<li class="evernote"><a href="#">evernote</a></li>
-					<li class="facebook"><a href="https://www.facebook.com/brankic1979themes">facebook</a></li>
-					<li class="flickr"><a href="http://www.flickr.com/photos/brankic1979/">flickr</a></li>
-					<li class="forrst"><a href="#">forrst</a></li>
-					<li class="github"><a href="#">github</a></li>
-					<li class="google"><a href="#">google</a></li>
-					<li class="googleplus"><a href="#">googleplus</a></li>
-					<li class="gowalla"><a href="#">gowalla</a></li>
-					<li class="grooveshark"><a href="#">grooveshark</a></li>
-					<li class="html5"><a href="#">html5</a></li>
-					<li class="icloud"><a href="#">icloud</a></li>
-					<li class="lastfm"><a href="#">lastfm</a></li>
-					<li class="linkedin"><a href="#">linkedin</a></li>
-					<li class="metacafe"><a href="#">metacafe</a></li>
-					<li class="mixx"><a href="#">mixx</a></li>
-					<li class="myspace"><a href="#">myspace</a></li>
-					<li class="netvibes"><a href="#">netvibes</a></li>
-					<li class="newsvine"><a href="#">newsvine</a></li>
-					<li class="orkut"><a href="#">orkut</a></li>
-					<li class="paypal"><a href="#">paypal</a></li>
-					<li class="picasa"><a href="#">picasa</a></li>
-					<li class="pinterest"><a href="#">pinterest</a></li>
-					<li class="plurk"><a href="#">plurk</a></li>
-					<li class="posterous"><a href="#">posterous</a></li>
-					<li class="reddit"><a href="#">reddit</a></li>
-					<li class="rss"><a href="#">rss</a></li>
-					<li class="skype"><a href="#">skype</a></li>
-					<li class="stumbleupon"><a href="#">stumbleupon</a></li>
-					<li class="technorati"><a href="#">technorati</a></li>
-					<li class="tumblr"><a href="#">tumblr</a></li>
-					<li class="twitter"><a href="#">twitter</a></li>
-					<li class="vimeo"><a href="#">vimeo</a></li>
-					<li class="wordpress"><a href="#">wordpress</a></li>
-					<li class="yahoo"><a href="#">yahoo</a></li>
-					<li class="yelp"><a href="#">yelp</a></li>
-					<li class="youtube"><a href="#">youtube</a></li>
-					<li class="zerply"><a href="#">zerply</a></li>
-					<li class="zootool"><a href="#">zootool</a></li>
-				</ul>
-			</div>
-			<!-- end: Social Sites -->
-
-		</div>
-		<!-- end: Container -->
 
 		<!--start: Container -->
     	<div class="container">
